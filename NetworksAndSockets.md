@@ -51,5 +51,43 @@
       * 在自动生成IPv6地址时，我们通常是根据MAC地址生成的，这样就是48位。
     * p.s MAC: MAC是身份证号码，用来识别网络设备本身。IP地址是居住地。具有全球唯一性。
   * routing protocols
+    * Internet approach to scalable routing:
+      * intra-AS(autonomous system: a collection of routers whose prefixes and routing policies are under common administrative control. or "domain")
+        * routing among hosts, routers in same AS
+        * all routers in AS must run same intra-domain protocol
+        * routers in different AS can run different intra-domain routing protocol
+        * gateway router: at "edge" of its own AS, has lik to routers in other AS'er
+      * inter-AS
+        * routing among AS'es
+        * gateways perform inter domain routing(as well as intra-domain routing)
+    * Three Major Types:
+      * Interior gateway protocols -> link-state routing protocols:
+        * Open Shortest Path First(OSPF): 
+          * publicly available
+          * link state packet dissemination, topology map at each node and Dijkstra's algorithm
+          * router floods OSPF link-state advertisements to all other routers in entire AS
+        * Intermediate System-to-Intemediate System(IS-IS)
+          * [Only little difference with OSPF](https://community.cisco.com/t5/network-architecture-documents/ospf-and-is-is-differences/ta-p/3126940)
+      * Interior gateway protocols -> distance-vector routing protocols
+        * Distance vector algorithm:
+          * Dx(y) = estimate of least cost from x to y. for all y belong to N
+          * node x:
+            * knows cost to each neighbor v: c(x,v)
+            * maintains its neighbors' distance vectors. For each neighbor v,x maintains: Dv = Dv(y) for all y belong to N. Dx(y) = min(c(x,v) + Dv(y)) for all v as x' neighbours and all y belong to N
+        * Routing Information Protocol(RIP)
+        * RIPv2
+        * Interior Gateway Protocol(IGRP)
+      * Comparision of LS and DV algorithms
+        * message complexity:
+          * LS(link state): with n nodes, E links -> O(nE) msgs sent
+          * DV: exchange between neighours only -> convergence time varies
+        * speed of convergence
+          * LS: O(n^2) algorithm requires (if binary heap, O(|E+n|logn, O(nE) msgs
+          * DV: Propotional to the number of hops in the longest min-cost path 
+        * robustness:
+          * LS: node can advertise incorrect LINK cost, each node computes only its own table
+          * DV: DV node can devertise incorrect PATH cost, each node's table used by other
+      * Exterior gateway protocols
+      
 * Link
 * Physical
