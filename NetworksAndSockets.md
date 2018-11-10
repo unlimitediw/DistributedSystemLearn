@@ -35,6 +35,7 @@
       1. SYN: The active open is performed by the client sending a SYN to the server. The client sets the segment's sequence number to a random value A.
       2. SYN-ACK: In response, the server replies with a SYN-ACK. The acknowledgment number is set to one more than the received sequence number i.e. A+1, and the sequence number that the server chooses for the packet is another random number, B.
       3. ACK: Finally, the client sends an ACK back to the server. The sequence number is set to the received acknowledgement value i.e. A+1, and the acknowledgement number is set to one more than the received sequence number i.e. B+1.
+    * ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/TCPFormat.PNG)
   * UDP
     * User Datagram Protocol: With UDP, computer applications can send messages, in this case referred to as datagrams, to other hosts on an Internet Protocol (IP) network.
     * no "connection" between client and server:
@@ -131,3 +132,4 @@
   * Send
   * Receive
   * Blocking and Non-blocking
+ 
