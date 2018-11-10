@@ -115,10 +115,12 @@
 1. Type URL and hit enter
 2. DNS lookup: hostname -> IP
 3. ARP lookup: IP->MAC address
+  * arp displays and modifies entries in the Address Resolution Protocol (ARP) cache, which contains one or more tables that are used to store IP addresses and their resolved Ethernet or Token Ring physical addresses. 
 4. Socket setup
 5. Send call moves data from browser to OS
 6. TCP Handshake
 7. Routing lookups along path
 8. HTTP request issued 
 9. Parse HTTP response: HTML->DOM tree
+  * The Document Object Model (DOM) is a cross-platform and language-independent application programming interface that treats an HTML, XHTML, or XML document as a tree structure where in each node is an object representing a part of the document. 
 10. Make additional requests for other resources
