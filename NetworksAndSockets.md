@@ -102,6 +102,7 @@
 * Link: adjacent nodes
   * Ethernet
     * It is a family of computer networking technologies commonly used in local area networks (LAN), metropolitan area networks (MAN) and wide area networks (WAN)
+    * 以太网（英语：Ethernet）是一种计算机局域网技术。IEEE组织的IEEE 802.3标准制定了以太网的技术标准，它规定了包括物理层的连线、电子信号和介质访问层协议的内容。以太网是目前应用最普遍的局域网技术，替换了其他局域网标准如令牌环、FDDI和ARCNET。
     * ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Data_Networks_classification_by_spatial_scope.png)
   * 802.111(WIFI)
   * PPP
