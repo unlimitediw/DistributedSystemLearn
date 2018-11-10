@@ -80,14 +80,15 @@
       * Comparision of LS and DV algorithms
         * message complexity:
           * LS(link state): with n nodes, E links -> O(nE) msgs sent
-          * DV: exchange between neighours only -> convergence time varies
+          * DV: exchange between neighours at each iteration -> convergence time varies
         * speed of convergence
           * LS: O(n^2) algorithm requires (if binary heap, O(|E+n|logn, O(nE) msgs
           * DV: Propotional to the number of hops in the longest min-cost path 
         * robustness:
           * LS: node can advertise incorrect LINK cost, each node computes only its own table
           * DV: DV node can devertise incorrect PATH cost, each node's table used by other
+        * [LS和DV路由协议的分析与比较](https://blog.csdn.net/hnu_lb/article/details/25025575)
       * Exterior gateway protocols
-      
+        * Are routing protocols used on the Internet for exchanging routing information between Autonomous Systems, such as Border Gateway Protocol (BGP), Path Vector Routing Protocol.
 * Link
 * Physical
