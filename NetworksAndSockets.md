@@ -3,6 +3,12 @@
 * http://www.example.com/index.html, which indicates a protocol (http), a hostname (www.example.com), and a file name (index.html).
 
 ### Topic 2: Protocol Layers
+1. [Application](#application)
+1. [Transport](#transport)
+1. [Network](#network)
+1. [Link](#link)
+1. [Physical](#physical)
+<a name="application"></a>
 * Application
   * FTP
     * File Transfer Protocol: a standard network protocol used for the transfer of computer files between a client and server on a computer network.
@@ -15,6 +21,7 @@
     * Hypertext Transfer Protocol: is an application protocol for distributed, collaborative, hypermedia information systems.
     * TCP and UDP
     * WWW: HTTP is the foundation of data communication for the World Wide Web
+<a name="transport"></a>
 * Transport: data transfer
   * TCP(or TCP/IP)
     * Transmission Control Protocol: TCP provides reliable, ordered, and error-checked delivery of a stream of octets (bytes) between applications running on hosts communicating via an IP network.
@@ -36,6 +43,7 @@
       * server must extract IP address, port of sender from received datagram
     * transmiited data may be received out of order or lost
     * UDP provides unreliable transfer of groups of bytes(datagrams) between client and server
+<a name="network"></a>
 * Network: finding routes
   * IP
     * Internet Protocol address: is a numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication. An IP address serves two principal functions: host or network interface identification and location addressing.
@@ -90,5 +98,13 @@
         * [LS和DV路由协议的分析与比较](https://blog.csdn.net/hnu_lb/article/details/25025575)
       * Exterior gateway protocols
         * Are routing protocols used on the Internet for exchanging routing information between Autonomous Systems, such as Border Gateway Protocol (BGP), Path Vector Routing Protocol.
-* Link
+<a name="link"></a>
+* Link: adjacent nodes
+  * Ethernet
+  * 802.111(WIFI)
+  * PPP
+<a name="physical"></a>
+* Physical:
+  * bit on wire
+  * bit in the air
 * Physical
