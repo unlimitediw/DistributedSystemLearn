@@ -110,4 +110,15 @@
 * Physical:
   * bit on wire
   * bit in the air
-* Physical
+
+###Topic 3: Steps
+1. Type URL and hit enter
+2. DNS lookup: hostname -> IP
+3. ARP lookup: IP->MAC address
+4. Socket setup
+5. Send call moves data from browser to OS
+6. TCP Handshake
+7. Routing lookups along path
+8. HTTP request issued 
+9. Parse HTTP response: HTML->DOM tree
+10. Make additional requests for other resources
