@@ -26,7 +26,7 @@
   * TCP(or TCP/IP)
     * Transmission Control Protocol: TCP provides reliable, ordered, and error-checked delivery of a stream of octets (bytes) between applications running on hosts communicating via an IP network.
     * point-to-point: one sender, one receiver
-    * reliable, in-order byte stream
+    * reliable, in-order byte stream but slow start
     * pipelined: TCP congestion and flow control set window size
     * full duplex data:
       * bi-directional data flow in same connection
@@ -111,7 +111,7 @@
   * bit on wire
   * bit in the air
 
-###Topic 3: Steps
+### Topic 3: Steps
 1. Type URL and hit enter
 2. DNS lookup: hostname -> IP
 3. ARP lookup: IP->MAC address
@@ -124,3 +124,10 @@
 9. Parse HTTP response: HTML->DOM tree
   * The Document Object Model (DOM) is a cross-platform and language-independent application programming interface that treats an HTML, XHTML, or XML document as a tree structure where in each node is an object representing a part of the document. 
 10. Make additional requests for other resources
+
+### Topic 4: Socket
+
+* What can a socket do
+  * Send
+  * Receive
+  * Blocking and Non-blocking
