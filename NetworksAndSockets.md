@@ -29,7 +29,27 @@
       2. SYN-ACK: In response, the server replies with a SYN-ACK. The acknowledgment number is set to one more than the received sequence number i.e. A+1, and the sequence number that the server chooses for the packet is another random number, B.
       3. ACK: Finally, the client sends an ACK back to the server. The sequence number is set to the received acknowledgement value i.e. A+1, and the acknowledgement number is set to one more than the received sequence number i.e. B+1.
   * UDP
-    * User Datagram Protocol
-* Network
+    * User Datagram Protocol: With UDP, computer applications can send messages, in this case referred to as datagrams, to other hosts on an Internet Protocol (IP) network.
+    * no "connection" between client and server:
+      * no handshaking
+      * sender explicitly attaches IP address and port of destination
+      * server must extract IP address, port of sender from received datagram
+    * transmiited data may be received out of order or lost
+    * UDP provides unreliable transfer of groups of bytes(datagrams) between client and server
+* Network: finding routes
+  * IP
+    * Internet Protocol address: is a numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication. An IP address serves two principal functions: host or network interface identification and location addressing.
+    * IPV4: 
+      * 32bit
+      * private addresses(excluded range):
+        * 10.0.0.0 … 10.255.255.255
+        * 172.16.0.0 … 172.31.255.255
+        * 192.168.0.0 … 192.168.255.255
+        * Network Address Translation(NAT): 装有NAT软件的路由器叫做NAT路由器，它至少有一个有效的外部全球IP地址。这样，所有使用本地地址的主机在和外界通信时，都要在NAT路由器上将其本地地址转换成全球IP地址，才能和因特网连接。
+        * [IPV4 WIKI](https://en.wikipedia.org/wiki/IPv4)
+    * IPV6
+      * 在自动生成IPv6地址时，我们通常是根据MAC地址生成的，这样就是48位。
+    * p.s MAC: MAC是身份证号码，用来识别网络设备本身。IP地址是居住地。具有全球唯一性。
+  * routing protocols
 * Link
 * Physical
