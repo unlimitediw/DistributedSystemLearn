@@ -26,7 +26,7 @@
   * TCP(or TCP/IP)
     * Transmission Control Protocol: TCP provides reliable, ordered, and error-checked delivery of a stream of octets (bytes) between applications running on hosts communicating via an IP network.
     * point-to-point: one sender, one receiver
-    * reliable, in-order byte stream
+    * reliable, in-order byte stream but slow start
     * pipelined: TCP congestion and flow control set window size
     * full duplex data:
       * bi-directional data flow in same connection
@@ -102,11 +102,32 @@
 * Link: adjacent nodes
   * Ethernet
     * It is a family of computer networking technologies commonly used in local area networks (LAN), metropolitan area networks (MAN) and wide area networks (WAN)
-    ![](https://en.wikipedia.org/wiki/Metropolitan_area_network#/media/File:Data_Networks_classification_by_spatial_scope.png)
-  * 802.111(WIFI)
-  * PPP
+    * 以太网（英语：Ethernet）是一种计算机局域网技术。IEEE组织的IEEE 802.3标准制定了以太网的技术标准，它规定了包括物理层的连线、电子信号和介质访问层协议的内容。以太网是目前应用最普遍的局域网技术，替换了其他局域网标准如令牌环、FDDI和ARCNET。
+    * ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Data_Networks_classification_by_spatial_scope.png)
+  * [802.111(WIFI)](https://en.wikipedia.org/wiki/IEEE_802.11ac)
+  * [PPP is a data link layer (layer 2) communications protocol used to establish a direct connection between two nodes.](https://en.wikipedia.org/wiki/Point-to-Point_Protocol)
 <a name="physical"></a>
 * Physical:
   * bit on wire
   * bit in the air
-* Physical
+
+### Topic 3: Steps
+1. Type URL and hit enter
+2. DNS lookup: hostname -> IP
+3. ARP lookup: IP->MAC address
+  * arp displays and modifies entries in the Address Resolution Protocol (ARP) cache, which contains one or more tables that are used to store IP addresses and their resolved Ethernet or Token Ring physical addresses. 
+4. Socket setup
+5. Send call moves data from browser to OS
+6. TCP Handshake
+7. Routing lookups along path
+8. HTTP request issued 
+9. Parse HTTP response: HTML->DOM tree
+  * The Document Object Model (DOM) is a cross-platform and language-independent application programming interface that treats an HTML, XHTML, or XML document as a tree structure where in each node is an object representing a part of the document. 
+10. Make additional requests for other resources
+
+### Topic 4: Socket
+
+* What can a socket do
+  * Send
+  * Receive
+  * Blocking and Non-blocking
