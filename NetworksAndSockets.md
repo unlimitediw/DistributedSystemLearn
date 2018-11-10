@@ -102,7 +102,7 @@
 * Link: adjacent nodes
   * Ethernet
     * It is a family of computer networking technologies commonly used in local area networks (LAN), metropolitan area networks (MAN) and wide area networks (WAN)
-    ![](https://en.wikipedia.org/wiki/Metropolitan_area_network#/media/File:Data_Networks_classification_by_spatial_scope.png)
+    * ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Data_Networks_classification_by_spatial_scope.png)
   * 802.111(WIFI)
   * PPP
 <a name="physical"></a>
