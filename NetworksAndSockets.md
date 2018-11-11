@@ -142,7 +142,8 @@
 * Socket vs Port
   * Socket: One endpoint of the connection -> Means of plugging application layer into the transport layer
   * Port: A logical connection method two endpoints communicate through
-    * operate on the transport layer: VPN client connects to VPN 
+    * operate on the transport layer: VPN client connects to VPN server over port 1234
+   
 
 
  
