@@ -129,9 +129,20 @@
 10. Make additional requests for other resources
 
 ### Topic 4: Socket
+  
+* The principal abstraction is a socket
+  * Point at which an application attaches to the network
+  * Defines operations for creating connections, attaching to network, sending/receiving data, closing.
+  * Combination of Port number and Ip address
 
-* What can a socket do
-  * Send
-  * Receive
-  * Blocking and Non-blocking
+* Port
+  * Syntax: Ip:port(a 16-bit integer)
+  * A logical connection method two endpoints communicate through
+
+* Socket vs Port
+  * Socket: One endpoint of the connection -> Means of plugging application layer into the transport layer
+  * Port: A logical connection method two endpoints communicate through
+    * operate on the transport layer: VPN client connects to VPN 
+
+
  
