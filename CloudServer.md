@@ -39,4 +39,15 @@
     * Cloud needs to pay for servers, cooling infrastructure, energy, system adminstrators, etc
 
 ### Topic 2: Virtualizing Resources
+
+* Type of Virtualization:
+  * Application Virtualization:
+    * Runs application code
+    * Java JVM, WINE
+  * Hosted Virtualization
+    * Virtualizes a full OS and apps
+    * VMware Player, Virtual Box
+  * Paravirtualization
+    * Modify OS to simplify hypervisor
+    * Xen
     
