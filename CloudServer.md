@@ -247,13 +247,3 @@
         * SaaS exposes user interface for software
         * Data transparency -> storage details hidden from us
         * Logic transparency -> affects what SW we can run
-        
-        
-      
-      
-      
-    
-      
-
- 
-  
