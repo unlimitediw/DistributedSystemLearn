@@ -159,6 +159,98 @@
     * Containers and Distros
       * Each container can have its own distribution
       * Must share the same host kernel
+    * Container Packaging
+      * Deployment - big benefit of containers/virtualization
+        * Lets you package up an application and all of its requirements
+        * Evem the distribution and 3rd party utilities
+        * Very helpful for system administrators
+    * Container 'image'
+      * Linux distribution base files
+      * Dependency libs/utils
+      * Configuration files
+      * Application to run
+    * Can inerit files/libraries from host to reduce size of the container package
+    * File System Virtualization
+      * Container's file system is built by layering
+        * Several containers can use the same file system layers
+      * Read/Writer
+        * Allow multiple containers to manipulate data on host file system
+      * Copy on Write
+        * Each container thinks it has its own version of the file system
+        * Only duplicate the specific files that are written to 
+    * Container vs VMs
+      * Container Pros
+        * lightweight
+        * less resource consumption
+        * easier to deploy
+        * specify resources just for application
+        * startup time
+      * VMs pros
+        * stronger isolation
+        * different kernel versions/ OSes
+        * fault tolerance/isolation
+        * combine with containers
+    * Containers + VMs
+      * Containers can be combined with virtualization tools
+      * Docker on Windows
+        * Lets you run windows containers using OS isolation tools
+        * Lets you run linux containers by starting a linux VM automatically for you and dividing it up into containers
+    * Challenges
+      * Heterogeneity: Different HW, SW, workloads
+        * HW 
+          * different processor architecture, memory, number of CPUs, location disks etc
+          * for Iaas users need to know what they will get
+          * for Paas/Saas we can hide this
+        * Workloads
+          * stress out hardware, need to spread request(load balancing)
+          * can also help us share resources if peak are at different times
+        * SW
+          * need to worry about compatibility
+          * affects interoperability
+      * Openness: interoperability, shared protocols
+        * Ranking of openness/flexible: VMs in my data center > IaaS > Containers > Paas > Saas
+      * Security: confidentiality, integrity, availability
+        * VMs most secure, most control
+        * Containers kernel is shared, so less isolation
+        * Cloud: Trust? more skilled at providing security?
+      * Failure Handling: crashes, bugs, malicious
+        * Iaas with Containers/VMs
+          * physical failures can bring them all down
+          * bugs and attacks with user
+        * PaaS/SaaS
+          * cloud needs to worry about bugs in their platform and malicious attacks
+        * Containers are less isolated than VMs
+          * fault in the kernel will bring down all containers
+      * Concurrency: parallelism, consistency
+        * Depends on SW runing VMs/containers
+        * IaaS: depends on users
+        * PaaS/Saas: cloud provider must handle concurrency so they limit the type of state you can have to simplify consistency
+      * When running multiple VMs, need to worry about scheduling on CPUs
+        * Kernel knows about all processes in a container, but sees the VM as a black box 
+      * Quality of Service: latency, throughput
+        * QoS depends on applications
+        * Containers are lighter weight so should have better QoS
+        * Qos affected by available HW and workload distribution
+        * Tail latency: highly affected by shared resources
+          * cache misses will have big impact
+          * includes network costs
+      * Scalability: performance gain with more resources
+        * SaaS has easiest scalability since it has full control
+        * IaaS harder to scale
+          * User can ask for resources
+          * Cloud can monitor and respond
+        * Containers are more scalable because lighter weight
+          * we have great control over how resources are being used
+      * Transparency: abstraction layers, interfaces
+        * IaaS exposes HW interface
+        * PaaS exposes software library interface
+        * SaaS exposes user interface for software
+        * Data transparency -> storage details hidden from us
+        * Logic transparency -> affects what SW we can run
+        
+        
+      
+      
       
     
       
