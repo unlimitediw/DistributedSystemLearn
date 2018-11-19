@@ -59,4 +59,12 @@
     * Nodes pick a random ID when they join: 0 to MAX-1
     * Nodes are assigned contiguous portions of the ring starting at their ID until they reach the subsequent node
     * A small list about what each nodes are responsible for is needed
-  
+    * Because # servers changing
+    * Chord lookup
+     * Options 0: Key index Table
+     * Options 1: Node index Table
+     * Options 2: Neighbors
+      * Each node tracks its successor and predecessor
+     * Options 3: Finger Tables
+      * Track m addtional neighbors: successor 2^0, 2^1, ..., 2^m
+      * Requires minimal state and can find item log(N) steos
