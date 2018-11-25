@@ -26,7 +26,7 @@
       * Flood the entire topology to all nodes
       * Each node computes shortest paths
       * Dijkstra's algorithm
-* Flexibility Problem
+### Flexibility Problem
   * All packets arriving at a switch/router are treated the same
     * Only consider the desination IP/MAC address to decide path
   * Traffic Engineering Problem
@@ -111,4 +111,38 @@
         * Rate limit
       * Procedure
         * Packet in -> (Ingress port)Table 0 -> (Packet + Ingressport + Metadata)Table1 -> ... -> Table n -> (packet)Execute action set -> Packet out(out of OpenFlow Switch)
+      * If no match in table: table miss
+      * Handling: depends on table configuration: might be drop packet, forward to other table, forward to controller
+      * Forward to controller allows to set up a flow entry
+### SDN Workflow
+  * Data plane (switches): maintains a flow table
+    * Flow = one point-to-point connection (Src/Dest IP and Port)
+    * Action = how switch should process the packet
+  * Control plane: defines fllow table rule for switches
+    * Can be based on business logic
+    * Select next hop, drop, mirror
+### Network Function Virtualization
+  * Make an efficient, customizable data plane
+    * routers, switches, firewalls, proxies, IDS, DPI
+  * Run network functions (NFs) in virtual machines
+    * More flexible than hardware
+    * Isolates functionality, easy to deploy and manage
+    * Slower than hardware
+### Network Data Plane
+  * Perform network functionality on custom ASICs (Application Specific Integrated Circuit)
+    * Fast, expensive, inflexible
+### Software Based Data Plane
+  * Hardware Routers and Switches
+    * Expensive, single purpose
+    * Controllable with SDNs, but not flexible
+  * PacketShader
+    * Use commodity servers and GPUs
+    * 39 Gbps processing rates
+  * Netmap and DPDK (Data Plane Development Kit)
+    * Libraries to provide zero-copy network processing on commodity 10gbps NICs (Network Interface Controller)
+  * ClickOS and NetVM
+    * VM based network services
+    * Flexible deployment and composition
+### Network Functions(NFs)
+
     
