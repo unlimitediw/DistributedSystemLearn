@@ -144,5 +144,20 @@
     * VM based network services
     * Flexible deployment and composition
 ### Network Functions(NFs)
+* Switches, routers, firewalls, NAT
+  * Simple packet header analysis and forwarding
+* Intrusion Detection System (IDS)
+  * Deep packet inspection (DPI) beyond header to detect threats
+  * Must have high scalability to observe full packet flows
+* Intrusio Prevention Sytems (IPS)
+  * Similar to IDS, but deployed in line, so it can actively manipulate traffic flows
+  * Must be efficient to avoid adding delay 
+* Cellular functions (Evolved Packet Core - EPC)
+  * Mobilit management, accounting, security, etc
+* Proxies, caches, load balancers, etc
+
+### Linux Packet Processing
+* Traditional networking
+  * NIC uses DMA to copy data into kernekl
 
     
