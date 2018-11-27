@@ -89,4 +89,13 @@
      * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two filesinto the image: index.html. and a graphic that will be used on our webpage
      * EXPOSE: documents which ports the application uses
      * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments)
-  3. In order to make the 
+  3. "export DOCKERID=unlimitediw"
+  4. "echo $DOCKERID"
+  5. Use the "docker image build" command to create a new Docker image using the instructions in the Dockerfile
+   * "--tag" allows us to give the image a custom name.
+   * "." tells Docker to use the current directory as the build context
+  6. Use the "docker container run" command to start a new container from the image you created.
+    * use "--publish" to publish port 80 inside the container onto port 80 on the host. (80 port to 80 port directly in container)
+    * --publish format flag "host_port:container_port"
+  7. "docker container rm --force linux_tweet_app" shut down and remove
+    
