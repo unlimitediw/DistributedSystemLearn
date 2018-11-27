@@ -25,8 +25,3 @@
     * Use it if it wants to persist any data beyond the lifecycle of the container
     * Network will also allow persistence after container end
   * Life Cycle 
-### Containers and VMs
-* VM
-	* VM: NIC(Network interface), Storage and Size
-	* Hypervisor: NIC, Storage, Agents and Kernel
-* Container
