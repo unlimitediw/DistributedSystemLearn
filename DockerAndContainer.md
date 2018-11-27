@@ -75,6 +75,3 @@
 				* -e will use an environment variable to specify the root password
 			2. List the running containers "docker container ls"
 			3. 
-
-
-
