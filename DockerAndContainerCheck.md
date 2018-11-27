@@ -21,26 +21,6 @@
     * Use it if it wants to persist any data beyond the lifecycle of the container
     * Network will also allow persistence after container end
   * Life Cycle 
-### Containers and VMs ###
-* VM
-	* APP -> OS -> VM -> Hypervisor -> Physical (notice that Application virtualization and Hosted virtualization are onside of OS)
-	* VM: NIC(Network interface), Storage and Size
-	* Hypervisor: NIC, Storage, Agents and Kernel
-* Container
-	* App + OS Dependences = Container -> OS -> VM -> Hypervisor -> Physical (VM may be combined using with Container
-### Docker Introduction ###
-* Task 0: Prerequisites
-  * It need a linux environment and a DockerID
-* Task 1: Run some simple Docker containers
-  * Three different ways to use containers:
-    1. To run a single task: This could be a shell script or a custom app.
-    2. Interactively: This connects you to the container similar to the way 
-    3. In the background: For long-running services like websites and databases
-  * Run a single task in an Alpine Linux container
-    1. Run "docker container run alpine hostname". The container will start, execute hostname command then exit
-      * Pull "alpine:latest" image from Docker Hub
-      * The container's hostname will be displayed
-    2. Check container states after hostname processing exits(container stop) by running "docker container ls --all"
-      * Docker doesn't delete resources by default and the container still exist in the "Exited" state
+
 		
 
