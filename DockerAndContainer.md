@@ -84,9 +84,9 @@
   * Build a simple website image
   1. "cd ~/linux_tweet_app"
   2. "cat Dockerfile"
-    * cat: concatenate command in linux
-    * From: specifies the base image to use as the starting point for this new image you're creating. For this example we're starting from nginx:latest
-    * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two filesinto the image: index.html. and a graphic that will be used on our webpage
-    * EXPOSE: documents which ports the application uses
-    * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments)
+     * cat: concatenate command in linux
+     * From: specifies the base image to use as the starting point for this new image you're creating. For this example we're starting from nginx:latest
+     * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two filesinto the image: index.html. and a graphic that will be used on our webpage
+     * EXPOSE: documents which ports the application uses
+     * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments)
   3. In order to make the 
