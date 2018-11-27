@@ -32,3 +32,45 @@
   * Hypervisor: NIC, Storage, Agents and Kernel
 * Container
   * App + OS Dependences = Container -> OS -> VM -> Hypervisor -> Physical (VM may be combined using with Container
+### Docker Introduction
+* Task 0: Prerequisites
+  * It need a linux environment and a DockerID
+* Task 1: Run some simple Docker containers
+  * Three different ways to use containers:
+    1. To run a single task: This could be a shell script or a custom app.
+    2. Interactively: This connects you to the container similar to the way 
+    3. In the background: For long-running services like websites and databases
+  * Run a single task in an Alpine Linux container
+    1. Run "docker container run alpine hostname". The container will start, execute hostname command then exit
+      * Pull "alpine:latest" image from Docker Hub
+      * The container's hostname will be displayed
+    2. Check container states after hostname processing exits(container stop) by running "docker container ls --all"
+      * Docker doesn't delete resources by default and the container still exist in the "Exited" state
+  * Run an interactive Ubuntu container
+    1. Run a Docker container and access its shell by "docker container run --interactive --tty --rm ubuntu bash"
+			* "--interactive" says you want an interactive session
+			* "--tty" allocates a pseudo-tty
+			* "--rm" tells Docker to go ahead and remove the container when it's done exuecuting
+			* bash(which is a shell, a user interface for access to an operating system) is used as main process
+			* Now you are in the bash shell
+		2. Run "ls /", "ps aux" and "cat/etc/issue"
+			* "ls /" list the contents of the root director in the container
+			* "ps aux" show running processes in the container
+				* USER PID ... STAT START TIME COMMAND
+				* root 1 ... SS 00:12 0:00 bash
+				* root 14 ...R+ 00:22 0:00 ps aux
+		3. Type "exit" to leave the shell session. This will terminate the bash process, causing the container to exit
+			* Run a background MySQL container
+				1. Run a new MySQL container with
+'<code>'
+					 docker container run \
+					 --detach \
+					 --name mydb \
+					 -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+					 mysql:latest
+					* "--detach" will run the container in the background
+					* "--name" will name it mydb
+					* -e will use an environment variable to specify the root password
+'</code>'
+				2. List the running containers "docker container ls"
+				3. 
