@@ -80,13 +80,12 @@
     4. List the MySQL version using "docker exec"(which allow you command inside a container) and run "mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version".
     5. You can also use "docker exec -it mydb sh" to connect to a new shell process inside an already running container
   > Task 2: Package and run a custom app using Docker 
-  
-    * Build a simple website image
-    1. "cd ~/linux_tweet_app"
-    2. "cat Dockerfile"
-      * cat: concatenate command in linux
-      * From: specifies the base image to use as the starting point for this new image you're creating. For this example we're starting from nginx:latest
-      * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two filesinto the image: index.html. and a graphic that will be used on our webpage
-      * EXPOSE: documents which ports the application uses
-      * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments)
-    3. In order to make the 
+  * Build a simple website image
+  1. "cd ~/linux_tweet_app"
+  2. "cat Dockerfile"
+    * cat: concatenate command in linux
+    * From: specifies the base image to use as the starting point for this new image you're creating. For this example we're starting from nginx:latest
+    * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two filesinto the image: index.html. and a graphic that will be used on our webpage
+    * EXPOSE: documents which ports the application uses
+    * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments)
+  3. In order to make the 
