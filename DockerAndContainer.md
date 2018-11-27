@@ -71,5 +71,6 @@
 					* "--detach" will run the container in the background
 					* "--name" will name it mydb
 					* -e will use an environment variable to specify the root password
+'</code>'
 				2. List the running containers "docker container ls"
 				3. 
