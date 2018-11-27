@@ -27,8 +27,8 @@
   * Life Cycle 
 ### Containers and VMs
 * VM
-  * APP -> OS -> VM -> Hypervisor -> Physical (notice that Application virtualization and Hosted virtualization are onside of OS)
-  * VM: NIC(Network interface), Storage and Size
+  APP -> OS -> VM -> Hypervisor -> Physical (notice that Application virtualization and Hosted virtualization are onside of OS)  
+  VM: NIC(Network interface), Storage and Size  
   * Hypervisor: NIC, Storage, Agents and Kernel
 * Container
   * App + OS Dependences = Container -> OS -> VM -> Hypervisor -> Physical (VM may be combined using with Container
@@ -53,6 +53,7 @@
         * "--rm" tells Docker to go ahead and remove the container when it's done exuecuting
         * bash(which is a shell, a user interface for access to an operating system) is used as main process
         * Now you are in the bash shell
+        * When the container start you will drop into the bash shell with the default prompt root@<container id>:/#. Docker has attached to the shell in the container, relying input and output between your local session in the container.
     2. Run "ls /", "ps aux" and "cat/etc/issue"
         * "ls /" list the contents of the root director in the container
         * "ps aux" show running processes in the container
