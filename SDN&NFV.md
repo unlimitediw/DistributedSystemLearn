@@ -184,10 +184,94 @@
     * Typical Server Packet Sizes: 1024bytes, 417 cycles(208.8ns)
   * How to eliminate/ hide overheads
     > Polling - Solve "Interrupt Context Switch Overhead"  
-    > Huge pages - Solve "NK Paging Overhead"  
     > User Mode Driver - Solve "Kernel User Overhead"  
+    > Huge pages - Solve "NK Paging Overhead"  
     > Lockless Inter Core Communication  
     > Pthread Affinity - Solve "Core To Thread Scheduling Overhead"  
     > High Throughput Bulk Mode I/O calls - Solve "PCI (Peripheral Component Interconnect) Bridge I/O Overhead"  
 ### Network Interrupts
+  * Probelms
+    * Interrupt can arrive during critical sections
+    * Interrupt can be delivered to the wrong CPU core
+    * Still must pay context switch cost
+  * Polling
+    * Continuously loop looking for new packet arrivals
+    * Polling can be wasteful, Interrupts help share the CPU
+### Kernel-User Overhead
+  * NIC Driver operates in kernel mode
+    * Read packets into kernel memory
+    * Stack pulls data out of packets
+    * Data is copied into user space for application ( Copy is bad)
+    * Application uses system calls to interface with OS
+  * User-mode Driver
+    * Kernel only sets up basic access to NIC
+    * User-space driver tells NIC to DMA data directly into user-space memory
+    * No extra copies, No in-kernel processing and No context switching
+  * Networking
+    * Linux networking stack has a lot of extra components
+    * For NFV middlebox we don't use all of this: TCP, UDP, sockets
+    * NFV middlebox only need packet data (for fast)
+### CPU Core Affinity
+  * Linux Scheduler can move threads between cores
+  * Problems(core to thread scheduling overhead): 1. Context switches 2. Cache locality
+  * Pin threads and dedicate cores
+### Paging Overhead
+  * For a 4KB Pages
+    * 4 packets(1KB) per page
+    * 14 million pps
+    * 3.6 million page table entries every second
+### Locks
+  * Thread synchronization is expensive
+    * Tens of nanoseconds to take an uncontested lock
+    * 10Gps -> 68ns per packet
+  * Producer/Consumer architecture
+    * Gather packets from NIC (producer) and ask worker to process them (consumer)
+  * Lock-free communication
+    * Ring-buffer based message queues
+### Bulk Operations
+  * PCIs bus uses mesaging protocols for CPU to interact with devices (NICs)
+  * Each message incurs some overhead
+  * Better to make larger bulk requests over PCI
+  * DPDK helps batch requests into bulk operations
+    * Retrieve a batch of packet descriptors received by NIC
+    * Enqueue/dequeue beaches of packet descriptors onto rings
+  * Limitations
+    * DPDK doesn't help with NF management or orchestration
+### Service Chainsionality to build
+  * Chain together functionality to build more complex services
+    * e.g (Firewall -> NAT -> Router) on Server
+    * Need to move packets through chain efficiently but it can be complex with multiple paths
+### OpenNetVM NFV Platform (User Space)
+  * Under:
+    * DPDK: provides underlying I/O engine
+    * Manager: tracks which NFs are active, organizes chains
+    * NIC - RX, TX - NIC
+  * Medium:
+    * NFs: run inside Docker container, use NFlib API
+    * NFlib, 3rd party lib, custom distro
+    * Receive and Transmit
+  * Onside:
+    * Shared memory (packets, flow tables, service chains, ring buffers): efficient communication between NFs
+### Limitations
+  * DPDK only helps with raw packet IO
+  * Doesn't provide any protocol stacks: No IP, TCP or UDP and No socket interface
+### TCP in Linux
+  * Linux TCP stack is not designed for high performance
+    * Especially for short flows
+    * Poor scalability, bad locality
+    * Same problems we saw with DPDK
+### mTCP
+  * User space TCP stack
+    * Built on DPDK/OpenNetVM
+  * Key Ideas
+    * Eliminate shared resources by partitioning flows to independent threads
+    * Use batching to minmize overheads
+    * Epoll interface to support existing end-point application
+  * mTCP Kernel Bypass
+    * Responding to a packet arrival only incurs a context switch, not a full system call
+    * mTCP: (Application <- Context switching -> (mTCPsocket,mTCPepoll - mTCP thread - User-level packet I/O library))
+    <- User Kernel -> NIC device driver
+    * Linux TCP: Application <- System call -> (BSDsocket,Linuxepoll - Kernel TCP - Packet I/O
+  
+  
     
