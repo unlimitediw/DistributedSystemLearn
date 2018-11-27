@@ -62,13 +62,13 @@
     3. Type "exit" to leave the shell session. This will terminate the bash process, causing the container to exit
         * Run a background MySQL container
           1. Run a new MySQL container with
-            '<code>'
+             <code>
               docker container run \
               --detach \
               --name mydb \
               -e MYSQL_ROOT_PASSWORD=my-secret-pw \
               mysql:latest
-            '</code>'
+             </code>
               * "--detach" will run the container in the background
               * "--name" will name it mydb
               * -e will use an environment variable to specify the root password
