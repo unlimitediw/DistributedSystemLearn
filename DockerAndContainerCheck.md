@@ -47,31 +47,4 @@
     2. Check container states after hostname processing exits(container stop) by running "docker container ls --all"
       * Docker doesn't delete resources by default and the container still exist in the "Exited" state
 		
-  * Run an interactive Ubuntu container
-    1. Run a Docker container and access its shell by "docker container run --interactive --tty --rm ubuntu bash"
-			* "--interactive" says you want an interactive session
-			* "--tty" allocates a pseudo-tty
-			* "--rm" tells Docker to go ahead and remove the container when it's done exuecuting
-			* bash(which is a shell, a user interface for access to an operating system) is used as main process
-			* Now you are in the bash shell
-		2. Run "ls /", "ps aux" and "cat/etc/issue"
-			* "ls /" list the contents of the root director in the container
-			* "ps aux" show running processes in the container
-				* USER PID ... STAT START TIME COMMAND
-				* root 1 ... SS 00:12 0:00 bash
-				* root 14 ...R+ 00:22 0:00 ps aux
-		3. Type "exit" to leave the shell session. This will terminate the bash process, causing the container to exit
-			* Run a background MySQL container
-				1. Run a new MySQL container with
-'<code>'
-					 docker container run \
-					 --detach \
-					 --name mydb \
-					 -e MYSQL_ROOT_PASSWORD=my-secret-pw \
-					 mysql:latest
-					* "--detach" will run the container in the background
-					* "--name" will name it mydb
-					* -e will use an environment variable to specify the root password
-'</code>'
-				2. List the running containers "docker container ls"
-				3. 
+
