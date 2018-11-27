@@ -25,3 +25,10 @@
     * Use it if it wants to persist any data beyond the lifecycle of the container
     * Network will also allow persistence after container end
   * Life Cycle 
+### Containers and VMs
+* VM
+	* APP -> OS -> VM -> Hypervisor -> Physical (notice that Application virtualization and Hosted virtualization are onside of OS)
+	* VM: NIC(Network interface), Storage and Size
+	* Hypervisor: NIC, Storage, Agents and Kernel
+* Container
+	* App + OS Dependences = Container -> OS -> VM -> Hypervisor -> Physical (VM may be combined using with Container
