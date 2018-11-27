@@ -1,6 +1,4 @@
-
-## Containers ##
-### What is container? ###
+### What is container?
 * Runtime OS (e.g linux): inside are processes. The container is used to isolate one process to other processes (sandbox)
   * The container process is tied in with the lifecycle of container.
 * Container Image
