@@ -64,11 +64,11 @@
 		* Run a background MySQL container
 			1. Run a new MySQL container with		
 									
-			 docker container run \
-			 --detach \
-			 --name mydb \
-			 -e MYSQL_ROOT_PASSWORD=my-secret-pw \
-			 mysql:latest
+				 docker container run \
+				 --detach \
+				 --name mydb \
+				 -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+				 mysql:latest
 			
 			* "--detach" will run the container in the background
 			* "--name" will name it mydb
