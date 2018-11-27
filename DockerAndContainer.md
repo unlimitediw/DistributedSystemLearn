@@ -79,7 +79,7 @@
     3. Check what's happening in your containers by "docker container logs" and "docker container top".
     4. List the MySQL version using "docker exec"(which allow you command inside a container) and run "mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version".
     5. You can also use "docker exec -it mydb sh" to connect to a new shell process inside an already running container
-  > Task 2: Package and run a custom app using Docker
+  > Task 2: Package and run a custom app using Docker  
     * Build a simple website image
     1. "cd ~/linux_tweet_app"
     2. "cat Dockerfile"
