@@ -271,7 +271,41 @@
     * Responding to a packet arrival only incurs a context switch, not a full system call
     * mTCP: (Application <- Context switching -> (mTCPsocket,mTCPepoll - mTCP thread - User-level packet I/O library))
     <- User Kernel -> NIC device driver
-    * Linux TCP: Application <- System call -> (BSDsocket,Linuxepoll - Kernel TCP - Packet I/O
-  
-  
+    * Linux TCP: Application <- System call(User Kernel) -> (BSDsocket,Linuxepoll - Kernel TCP - Packet I/O
+    * Performance Improvement
+      * Web Server (Lighttpd SpecWeb2009 set)
+        * 3.2x faster than Linux
+        * 1.5x faster than MegaPipe
+      * SSL Proxy (Bottleneck in TCP)
+        * 1.3x faster than Linux (larger flows better performance)
+    
+### mOS
+  * If middlebox (not end point server) needs TCP processing (It is mentioned previously that middlebox only need packets)
+  * Proxies, L4/L7 load balancers, DPI(deep packet inspection), IDS(intrusion detection system), etc
+    * TCP state transitions
+    * Byte stream reconstruction
+  * Reusable protocol stack for middle boxes
+  * Key Idea: Allow customizable processing based on flow-level "events"
+  * Separately track client and server side state
+  * Base Events
+    * TCP connection start/end
+    * packet arrival
+    * retransmission, etc
+  * User Events
+    * Base event + a filter function run in mOS stack
+    
+### TCP + OpenNetvm
+  * openNetVM is a high performance NFV platform based on DPDK and Docker containers which is a flexible framework for deploying network functions and interconnecting them to build service chain.
+  * Porting mOS/mTCP to run on OpenNetVM
+  * Allow deployment of mixed NFs and endpoints
+  * Allows several different mTCP endpoints on same host
+  * NF services could expose APIs to work with endpoints
+  * Mixed NFs + endpoints blurs the line of the application and the network
+    * NF services could expose APIs to work with endpoints
+### Microboxes
+  * Consolidate Stack Processing
+  * Customizable Stack Modules
+  * Unified Event Interface
+  * Microboxes = uStack + uEvent  
+               = stack snapshot + parallel stacks + parallel events + event hierarchy + publish/subscribe interface
     
