@@ -158,6 +158,36 @@
 
 ### Linux Packet Processing
 * Traditional networking
-  * NIC uses DMA to copy data into kernekl
-
+  * NIC(Network Interface) uses DMA(Direct Memory Access) to copy data into kernekl
+  * Interrupt when packerts arrive
+  * Copy packet data from kernel space to user space
+  * Use system call to send data from user space
+### User Space Packet Processing: Recent NICs and OS support allow user space apps to directly access packet data
+  * NIC uses DMA to copy data into user space buffer (rather than kernel)
+  * Use polling to find (rather than interrupt) when packets arrive
+  * Use regular function call (rahter than system) to send data from user space
+### Data Plane Development Kit (DPDK)
+  * High performance I/O libraruy
+  * Poll mode driver (PMD, Receive and transmit packets more and fast) reads packets from NIC
+  * Packets bypass the OS and are copid directly into user space memory
+  * Low level library does not provide:
+    * Support for multiple network functions
+    * SDN-based control
+    * Interrupt-driven NFs
+    * State management
+    * TCP stack
+  * Strength:
+    * Applications that need high speed access to low-level packet data
+    * One of the best documented open source projects
+  * Line rate (PacketsPerSec/PacketSize)
+    * Network Infrastructure Packet Sizes: 64bytes, 33 cycles(16.8ns)
+    * Typical Server Packet Sizes: 1024bytes, 417 cycles(208.8ns)
+  * How to eliminate/ hide overheads
+    > Polling - Solve "Interrupt Context Switch Overhead"
+    > Huge pages - Solve "NK Paging Overhead"
+    > User Mode Driver - Solve "Kernel User Overhead"
+    > Lockless Inter Core Communication
+    > Pthread Affinity - Solve "Core To Thread Scheduling Overhead"
+    > High Throughput Bulk Mode I/O calls - Solve "PCI (Peripheral Component Interconnect) Bridge I/O Overhead"
+### Network Interrupts
     
