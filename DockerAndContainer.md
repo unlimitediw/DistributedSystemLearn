@@ -34,9 +34,9 @@
 > Container  
   * App + OS Dependences = Container -> OS -> VM -> Hypervisor -> Physical (VM may be combined using with Container  
 ### Docker Introduction
-* Task 0: Prerequisites
+> Task 0: Prerequisites
   * It need a linux environment and a DockerID
-* Task 1: Run some simple Docker containers
+> Task 1: Run some simple Docker containers
   * Three different ways to use containers:
     1. To run a single task: This could be a shell script or a custom app.
     2. Interactively: This connects you to the container similar to the way 
