@@ -183,11 +183,11 @@
     * Network Infrastructure Packet Sizes: 64bytes, 33 cycles(16.8ns)
     * Typical Server Packet Sizes: 1024bytes, 417 cycles(208.8ns)
   * How to eliminate/ hide overheads
-     > Polling - Solve "Interrupt Context Switch Overhead"
-     > Huge pages - Solve "NK Paging Overhead"
-     > User Mode Driver - Solve "Kernel User Overhead"
-     > Lockless Inter Core Communication
-     > Pthread Affinity - Solve "Core To Thread Scheduling Overhead"
-     > High Throughput Bulk Mode I/O calls - Solve "PCI (Peripheral Component Interconnect) Bridge I/O Overhead"
+     * Polling - Solve "Interrupt Context Switch Overhead"
+     * Huge pages - Solve "NK Paging Overhead"
+     * User Mode Driver - Solve "Kernel User Overhead"
+     * Lockless Inter Core Communication
+     * Pthread Affinity - Solve "Core To Thread Scheduling Overhead"
+     * High Throughput Bulk Mode I/O calls - Solve "PCI (Peripheral Component Interconnect) Bridge I/O Overhead"
 ### Network Interrupts
     
