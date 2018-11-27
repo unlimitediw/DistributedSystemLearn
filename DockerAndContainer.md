@@ -46,7 +46,7 @@
       * The container's hostname will be displayed
     2. Check container states after hostname processing exits(container stop) by running "docker container ls --all"
       * Docker doesn't delete resources by default and the container still exist in the "Exited" state
-	* Run an interactive Ubuntu container
+  * Run an interactive Ubuntu container
     1. Run a Docker container and access its shell by "docker container run --interactive --tty --rm ubuntu bash"
 			* "--interactive" says you want an interactive session
 			* "--tty" allocates a pseudo-tty
