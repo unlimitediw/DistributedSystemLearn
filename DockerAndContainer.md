@@ -129,20 +129,27 @@ The following work will start by creating a file which I retrieve the hostname a
     var os = require("os");
     var hostname = os.hostname();
     console.log("hello from " + hostname);  
-Then create a Dockerfile.txt  
+Then create a Dockerfile  
 #
     FROM alpine
     RUN apk update && apk add nodejs
     COPY . /app
     WORKDIR /app
     CMD ["node","index.js"]
+Build first image out of this Dockerfile and name it "hello:v0.1"
+#
+    docker image build -t hello:v0.1 .
 * Some Tips:
-  * To index.js in this linux os. First type  
+  * To build index.js in this linux os. First type  
   #
       vi index.js
-  And hit the "i" key to edit.  
-  End it with <esc> and then type :wq which will save the file and take me back to the command prompt.  
-
-
-
+  And hit the "i" key to edit.
+  End it with "esc" and then type :wq which will save the file and take me back to the command prompt. 
+  * To build Dockerfile is typically the same.
+  #
+      vi Dockerfile
+  To verify the Dockerfile use the command "cat Dockerfile"  
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Hellofrom.png)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerfileBuildImage.png)
+  
 
