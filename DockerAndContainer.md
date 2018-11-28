@@ -98,3 +98,21 @@
     * use "--publish" to publish port 80 inside the container onto port 80 on the host. (80 port to 80 port directly in container)
     * --publish format flag "host_port:container_port"
   7. "docker container rm --force linux_tweet_app" shut down and remove
+### Doing more with Docker images
+> Image creation from a container  
+* Running the bash shell inside the container and intalling figlet package in the container to customize things.
+#
+    docker container run -ti ubuntu bash  
+    apt-get update
+    apt-get install -y figlet
+    figlet "hello docker"
+* Create an image to share  
+To see a list of files that were added or changed when installed figlet. (a little like logs)
+#
+		docker container ls -a
+		docker container diff 63f7e97d2f73  
+To commit the container and create an image out of it
+#
+		docker container commit 63f7e97d2f73
+		
+
