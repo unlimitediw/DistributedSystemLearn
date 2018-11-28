@@ -106,37 +106,37 @@
     * High latency for first request to each container
     * Some container layer overheads plus the lambda gateway and routing overheads
     * Potential higher and unpredictable costs.
-* Two ways to scale
-  * Scale up(vertical)
-    * Buy a bigger computer
-  * Scale out(hirizontal)
-    * Buy multiple computers
+> Two ways to scale
+* Scale up(vertical)
+  * Buy a bigger computer
+* Scale out(hirizontal)
+  * Buy multiple computers
 
-* Does virtualization help?
+> Does virtualization help?
 
-* Replication
-  * Consistency
-    * Replicating data makes it faster to access-> but need keep all data consistent
-    * May a lightly out of date wikipedia page(but sometime such as facebook, stock: no)
-  * Different types of consistency
-    * Strict
-    * Sequential
-    * Causal
-    * Eventual
+> Replication
+* Consistency
+  * Replicating data makes it faster to access-> but need keep all data consistent
+  * May a lightly out of date wikipedia page(but sometime such as facebook, stock: no)
+* Different types of consistency
+  * Strict
+  * Sequential
+  * Causal
+  * Eventual
 
-* Spread data across servers
-  * useful if all data does not fit on one server
-  * Consider a Key Value store like Memcached
-    * Lots of data to store
-    * Consistency is not that important
-    * Might need to add or remove nodes to the cluster
+> Spread data across servers
+* useful if all data does not fit on one server
+* Consider a Key Value store like Memcached
+  * Lots of data to store
+  * Consistency is not that important
+  * Might need to add or remove nodes to the cluster
     
-* Distributed Hash Table
-  * Goals:
-    * Evenly partiotn data across nodes
-    * Efficient 
-    * Graceful when nodes are frequently joing or leaving
-    
+> Distributed Hash Table
+* Goals:
+  * Evenly partiotn data across nodes
+  * Efficient 
+  * Graceful when nodes are frequently joing or leaving
+
 * Simple Hash Table(str) -> Hash Function -> int -> value is stored in array[H % S]
 * array[H%N] N is # of nodes -> which nodes to watch back
 * Churn and Chord
