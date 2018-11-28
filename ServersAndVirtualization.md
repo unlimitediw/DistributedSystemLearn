@@ -1,5 +1,5 @@
 
-### Topic 1: Service
+### Topic 1: Server
 
 * Infrastructure as a Service(IaaS)
   * Greate flexibility for cloud user and Less management handled by cloud operator
