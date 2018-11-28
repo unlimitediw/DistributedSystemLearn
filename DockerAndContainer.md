@@ -124,6 +124,7 @@ We can create a container and add all libraries and binaries in it and then comm
 > Image creation using a Dockerfile  
 
 Instead of creating a static binary image, we can also use Dockerfile to create an image. Dockerfile supplies the instructions for building the image which is uselful to manage changes (how an image is built). Dockerfiles are simply text files and can be managed as source code.  
+> Dockerfile - A text file that contains all the commands, in order, needed to build a given image. The Dockerfile reference page lists the various commands and format details for Dockerfiles.  
 The following work will start by creating a file which I retrieve the hostname and display it.
 #
     var os = require("os");
@@ -162,6 +163,7 @@ Build first image out of this Dockerfile and name it "hello:v0.1"
   5. And finally, we gave our container a command (CMD) to run when the container starts.
 * Image Layers
   * The images are built in *layers*, the following are *layer* learning steps
+  > Layer - A Docker image is built up from a series of layers. Each layer represents an instruction in the image's Dockerfile. Each layer except the last one is read-only.  
   1. Check out the image created earlier by 
   #
       docker image history 723423834c7e
