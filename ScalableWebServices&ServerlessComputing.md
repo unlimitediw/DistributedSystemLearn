@@ -213,7 +213,43 @@
   * Can find items in log(N) steps
   * Like merge and conquer but the node don't know the size so use 2^m
 
+* Concepts:
+  * In Chord lookup protocol, rings has at most 2^m nodes, larger m to avoid collision. Some of nodes will map to machines or keys while others will be empty.
+  * The successor to a node is the next node in the identifier circle in a clockwise direction (while predecessor is counter-clockwise).
+  * The successor node of a key k is the first node whose ID equals to k or follows k in the identifier circle, denoted by successor(k). Every key is assigned to (stored at) its successor node, so looking up a key  k is to query  successor(k). (e.g. key k = 1-24 of successor(k) = node(25)
+  * Sucessor is the clockwise neighbours while the predecessor is the counter-clockwise neighbours.
 
 > Finger Table lookups
-* Initialize the finger table from its immediate neighbours and make some updates, which is O(logN)
+* Is to find successor(k)
+* m is the number of bits in hash keys
+* First entry of finger table is the immediate successor
+* Finger table size = m, finger i is n + 2^i
+* Since it is a loop, it may exceed, so remeber to mod the finger result with ring size 2^m
+* Be attention, although only a little node, each finger is point to exact position of ring so it may be empty but they all have point to a successor.
+* For a N node network time to find successor is O(logN)
+* Every time a node wants to look up a key k, it will pass the query to the cloest successor or predecessor (depending on finger table) of k in its finger table (maybe the larger one on the circle whose ID is smaller than k), until a node find k is stored in its immediate successor
+
+> Procedure
+* You have a start point
+* First Find the largest node by finger table, largest means it is right most but still small than the target.
+* Do it recursively
+* Finally Find the point
+* The key point is finger table memo the successor(n+2^i) and find the one largest but smaller than target. Then do the same thing with the largest point until no finger table value is smaller than target than we find the result.
+
+* Node join
+  * Three invariants should be maintained
+    1. Each node's successor points to its immediate successor correctly
+    2. Each key is tored in successor(k)
+    3. Each node's finger table should be correct
+  * We need to maintain predecessor field but do not need to maintain the successor (due to finger table and the position know its sucessor):
+  * Tasks:
+    1. Initialize node n (the predecessor and finger tables)
+    2. Notify other nodes to update their predecessors and finger tables
+    3. The new node takes over its responsible keys from its successor
+  * 类似于， 每个节点需要知道前一个节点以保证fingertablesearch的largest条件；每个节点需要知道finger table，而finger table知道自己位置所属节点所以就相当于知道了他的sucessor（下一个节点）。 然后就不需要知道别的了，可以完美运行。另外fingertable也是要更新的在点插入的时候。点拿走的时候就更新一下位置的successor和其他点的predecessor就行了
+  
+* Leave a node
+  * Predecessor need to know the failed node's entry
+  
+
 
