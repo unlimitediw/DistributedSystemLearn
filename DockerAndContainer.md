@@ -139,6 +139,11 @@ Then create a Dockerfile
 Build first image out of this Dockerfile and name it "hello:v0.1"
 #
     docker image build -t hello:v0.1 .
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerfileBuildImage.png)
+* Start a container to check that the application runs correctly
+#
+    docker container run hello:v0.1
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Hellofrom.png)
 * Some Tips:
   * To build index.js in this linux os. First type  
   #
@@ -149,8 +154,6 @@ Build first image out of this Dockerfile and name it "hello:v0.1"
   #
       vi Dockerfile
   To verify the Dockerfile use the command "cat Dockerfile"  
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerfileBuildImage.png)
-  * Start a container to check that the application runs correctly
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Hellofrom.png)
+
   
 
