@@ -44,6 +44,47 @@
   * Apache serving static content
   * Tomcat Java application managing user shopping carts
   * MySQL cluster storing products and completed orders
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Ntier.png)  
+  
+> Wikipedia: Big scale, cheap
+* 5th busiest site in the world, run on about ~1000 servers
+* All open source software: PHP, MariaDB, Squid proxy, memcached, Ubuntu
+* Goals:
+  * Store lots of content (6TB of text data as of 2018)
+  * Make available worldwide
+  * Do this as cheaply as possible
+  * Relatively weak consistency guarantees
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/WikiWebArch.png)  
+
+> Application Tier
+* A monolithic application -> scales by replicating the monolith on multiple servers
+
+> Microservices
+* Multiple servers -> Microservices which puts each element of functionality into a seperate service
+* And scales by distributing these services across servers, replicating as needed.
+
+> Microservices Challeneges
+* Discovery: how to find a service you want?
+* Scalability: how to replicate services for speed?
+* Openness: how to agree on a message protocol?
+* Fault tolerance: how to handle failed services?
+
+> Netflix
+* 26th most popular website but zero of their own servers
+  * All infrastructure is on AWS (2016-2018)
+  * Recently starting to build out their own Content Delivery Network
+* One of the first to really push microservices
+  * Known for their DevOps (software development&information technology operations which is to include automation and event monitoring at all steps of the software build)
+  * Fast paced, frequent updates, must always be available
+* 700+ microservices and Deployed across 10,000s of VMs and containers.
+
+> Netflix "Deathstar" and "Chaos Monkey
+* Deathstar problem: Microservice architecture results in a extremely distributed application which can be very difficult to manage and understand how it working at scale.
+* Idea: If my system can handle failures, then I don't need to know exactly how all the pieces themselves interact.
+* Chaos Monkey:
+  * Randomly terminate VMs and containers in the production environment
+  * Ensure that the overall system keeps operating
+  * Run this 24/7
 
 
 ### Serverless
