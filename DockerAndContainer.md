@@ -98,4 +98,9 @@
     * use "--publish" to publish port 80 inside the container onto port 80 on the host. (80 port to 80 port directly in container)
     * --publish format flag "host_port:container_port"
   7. "docker container rm --force linux_tweet_app" shut down and remove
-    
+### Doing more with Docker images
+> Image creation from a container  
+#
+    docker container run -ti ubuntu bash  
+As
+
