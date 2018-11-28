@@ -88,24 +88,36 @@
 
 
 ### Serverless
+> Serverless Computing
+* Trendy architecture that improves the agility of microservices
+* AWS Lambda, Azure Functions, APACHE OpenWhisk, Google Cloud Functions, etc.
+* Key idea: only instatiate a service when a user makes a request for that functionality
+
 > Serverless Startup
-  * AWS Lambda
-    * Define a stateless "function" to execute for each request
-    * A container will be instatiated to handle the first request
-    * The same container will be used until it times out or is killed(clean up)
-    * Set multi containers for multi function for easy management and check
+* AWS Lambda
+  * Define a stateless "function" to execute for each request
+  * A container will be instatiated to handle the first request
+  * The same container will be used until it times out or is killed(clean up)
+  * Set multi containers for multi function for easy management and check
+  * Procedure:
+    * Request arrives, start a container
+    * Reuse that container for subsequent requests (Lambda Gateway)
+    * Start new container if user needs a different function
+    * Clean up old containers once not in use
+* Benefit
+  * Simple for developer when auto scaling up
+  * Pay for exactly what we use
+  * Efficient use of resources(auto scale up and down based on requests)
+  * Don't worry about relability/ server management at all
+  * Prebuild in AWS
+* Drawbacks
+  * Limited functionality(stateless-cotainer itselft not store memory/catch, limited programming language)
+  * High latency for first request to each container
+  * Some container layer overheads plus the lambda gateway and routing overheads
+  * Potential higher and unpredictable costs.
+  * Difficult to debug / monitor behavior
+  * Security
     
-  * Benefit
-    * Simple for developer when auto scaling up
-    * Pay for exactly what we use
-    * Efficient use of resources(auto scale up and down based on requests)
-    * Don't worry about relability/ server management at all
-    * Prebuild in AWS
-  * Drawbacks
-    * Limited functionality(stateless-cotainer itselft not store memory/catch, limited programming language)
-    * High latency for first request to each container
-    * Some container layer overheads plus the lambda gateway and routing overheads
-    * Potential higher and unpredictable costs.
 > Two ways to scale
 * Scale up(vertical)
   * Buy a bigger computer
@@ -113,45 +125,95 @@
   * Buy multiple computers
 
 > Does virtualization help?
+* Virtualization divides something big into smaller pieces but still has features which can assist with scalability
+  * Easy replication of VM images
+  * Dynamic resource management
+* Simplifies scale out but has limits on how much you can scale up
 
-> Replication
-* Consistency
+
+> Biggest Challenge: Consistency
   * Replicating data makes it faster to access-> but need keep all data consistent
+  * Writes are even harder
+    * Would need time stamps or a consistent ordering
+    * Or, if writes are rare, just have a master coordinate
   * May a lightly out of date wikipedia page(but sometime such as facebook, stock: no)
+  
+> Providing Consistency
+* Techniques to help
+  * *Version vectors*
+  * Distributed locking based on *Lamport Clock*
+  * Election-based systems with a master/slave setup
+  
 * Different types of consistency
-  * Strict
-  * Sequential
-  * Causal
-  * Eventual
+  * Strict - updates immediately available after a write
+  * Sequential - result of parallel updates needs to have the same effect as if they had been done sequentially.
+  * Causal - updates that are casually related (e.g., where vector clocks can prove the relationship) are ordered sequentially, but other may not. 
+  * Eventual - updates will converge so at some point reads to any replica will get the same result.
 
+
+### Partitioning
 > Spread data across servers
 * useful if all data does not fit on one server
 * Consider a Key Value store like Memcached
   * Lots of data to store
   * Consistency is not that important
   * Might need to add or remove nodes to the cluster
-    
-> Distributed Hash Table
+
+> DHTs
+* A Distributed Hash Table is a key-value store that can be implemented in a Peer-2-Peer fashion.
 * Goals:
   * Evenly partiotn data across nodes
   * Efficient 
   * Graceful when nodes are frequently joing or leaving
+* If one node can't fit all the data -> Do two hash lookups.
+* But it will perform poorly reshuffling when a node leaves
 
-* Simple Hash Table(str) -> Hash Function -> int -> value is stored in array[H % S]
-* array[H%N] N is # of nodes -> which nodes to watch back
-* Churn and Chord
-  * Churn
-    * module
-  * Chord DHT Architecture: Hash Space(points)
-    * Nodes pick a random ID when they join: 0 to MAX-1
-    * Nodes are assigned contiguous portions of the ring starting at their ID until they reach the subsequent node
-    * A small list about what each nodes are responsible for is needed
-    * Because # servers changing
-    * Chord lookup
-     * Options 0: Key index Table
-     * Options 1: Node index Table
-     * Options 2: Neighbors
-      * Each node tracks its successor and predecessor
-     * Options 3: Finger Tables
-      * Track m addtional neighbors: successor 2^0, 2^1, ..., 2^m
-      * Requires minimal state and can find item log(N) steos
+> Churn
+* Churn is when nodes are fequently joining or leaving
+* When one node failed, all nodes may need to be reorganized
+
+> Chord DHT Architecture
+* Hash space as a ring
+* Nodes pick a random ID when they join: 0 to MAX - 1
+* Nodes are assigned contiguous portions of the ring starting at their ID until they reach the subsequent node.
+* How to divide the hashspace:
+  * If we have a lot of nodes we may divide it evenly
+  * Or each node may claim multiple IDs(virtual nodes)
+
+> Chord Churn
+* What happens when a node is removed: 
+  * the previous node points to where the removed node points to.
+  * 2n nodes are affected (bi direction)
+* What happens when a node is added:
+  * Generally the same
+  
+> Chord Lookups
+* Options 0: Key Index Table (key)
+  * Store the node(holding each keys) in a central server
+  * Directly access the node
+  * drawbacks:
+    * If we have millions of keys this table will be really big
+    * The node that manages the index table will be a centralizaed bottleneck
+* Options 1: Node Index Table (position)
+  * Store the indices of all node IDs
+  * Find which ID is closest to H
+  * Drawbacks:
+    * Table is still very large and may be bottleneck
+    * Need to worry about consistency updating the table
+* Options 2: Neighbors(double linked list like)
+  * Each node tracks its successor and predecessor
+  * If H > ID, ask successor; else ask predecessor
+  * Requires minimal state
+  * Drawback:
+    * Can take a long time to traverse the ring O(n)
+* Options 3: Finger Tables
+  * Track m additional neighbors: successor 2^0, 2^1, 2^2 ... 2^m
+  * Jump to cloest successor to find H then jump again
+  * Requires minimal state
+  * Can find items in log(N) steps
+  * Like merge and conquer but the node don't know the size so use 2^m
+
+
+> Finger Table lookups
+* Initialize the finger table from its immediate neighbours and make some updates, which is O(logN)
+
