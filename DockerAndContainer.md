@@ -154,6 +154,26 @@ Build first image out of this Dockerfile and name it "hello:v0.1"
   #
       vi Dockerfile
   To verify the Dockerfile use the command "cat Dockerfile"  
-
+* Review procedure
+  1. Specifies a base image to pull FROM - the alpine image we used in earlier labs.
+  2. Then it RUNs two commands (apk update and apk add) inside that container which installs the Node.js server.
+  3. Then we told it to COPY files from our working directory in to the container. The only file we have right now is our index.js.
+  4. Next we specify the WORKDIR - the directory the container should use when it starts up.
+  5. And finally, we gave our container a command (CMD) to run when the container starts.
+* Image Layers
+  * The images are built in *layers*, the following are *layer* learning steps
+  1. Check out the image created earlier by 
+  #
+      docker image history 723423834c7e
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerImageHistory.png)
+  In the history command output, the original Alpine layers are at the bottom of the list and then each customization we added in our Dockerfile is its own step in the output. This is a powerful concept because it means that if we need to make a change to our application, it may only affect a single layer!
+  #
+      echo "console.log(\"this is v0.2\");" >> index.js
+      docker image build -t hello:v0.2 .
+  Then it is found that it using cache in 2/5 steps
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/UsingCache.png)
+  
+ 
+ 
   
 
