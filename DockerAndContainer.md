@@ -109,10 +109,10 @@
 * Create an image to share  
 To see a list of files that were added or changed when installed figlet. (a little like logs)
 #
-docker container ls -a
-docker container diff 63f7e97d2f73  
+    docker container ls -a
+    docker container diff 63f7e97d2f73  
 To commit the container and create an image out of it
 #
-docker container commit 63f7e97d2f73
+    docker container commit 63f7e97d2f73
 
 
