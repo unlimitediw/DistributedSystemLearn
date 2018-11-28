@@ -119,7 +119,12 @@ To commit the container and create an image out of it
     docker image tag 1380f5719fab ourfiglet
     docker image ls
     docker container run ourfiglet figlet hello  
-![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerOurfiglet.png)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerOurfiglet.png)  
+We can create a container and add all libraries and binaries in it and then commit it to create an image. We can use the image s pulled from the Docker Store and share this image by pushing it to a registry somewhere.  
+> Image creation using a Dockerfile  
+Instead of creating a static binary image, we can also use Dockerfile to create an image.Dockerfile supplies the instructions for building the image which is uselful to manage changes (how an image is built). Dockerfiles are simply text files and can be managed as source code.  
+The following work will start by creating a file which I retrieve the hostname and display it.
+
 
 
 
