@@ -4,10 +4,47 @@
   * Read a file from disk and send it back to the client
   * images, HTML
 * Dynamic Content
-  * CGI Bin
+  * CGI-Bin (Custom Gateway Interface)
+    * It is a method to enhance the content of Web pages above simple HTML
+    * Script code is located in the CGI-BIN directory on the server
+    * The code is executed on the server
   * Executes a program
   * Not very safe or convient for development
   
+> 3-tier Web Applications
+* Separation of duties
+  * Front-end web server for static content (Apache, lightpd, nginx)
+  * Application tier for *dynamic* logic （PHP, Tomcat, node.js)
+  * Database back-end holds state (MySQL, MongoDB, Postgres)
+* e.g. customer -> Apache -> Tomcat -> MySQL
+* LAMP = Linux, Apache, MySQL, PHP
+
+> Stateful vs Stateless
+* The multi-tier architecture is based largely around whether a tier needs to worry about state
+* Front-end - totally *stateless*
+  * There is no data that must be maintained by the server to handle subsequent requests
+* Application tier - maintains *per-connection state*
+  * There is some temporary data related to each user, e.g., my shopping cart!
+  * May not be critical for reliability - might just store in memory
+* Database tier - global state
+  * Maintains the global data that application tier might need
+  * Persists state and ensures it is consistent
+
+> N-Tier Web Applications
+* Sometimes 3 tier isn't quite right
+* Database is often a bottleneck
+  * Add a cache (stateful, but not persistent)
+* Authentication or other security services could be another tier
+* Video transcoding, upload processing, etc
+* May like a direct graph
+
+> Replicated N - Tier
+* Replicate the portions of the system that are likely to become overloaded
+* Scale
+  * Apache serving static content
+  * Tomcat Java application managing user shopping carts
+  * MySQL cluster storing products and completed orders
+
 
 ### Serverless
 > Serverless Startup
