@@ -139,11 +139,11 @@ Then create a Dockerfile
 Build first image out of this Dockerfile and name it "hello:v0.1"
 #
     docker image build -t hello:v0.1 .
-![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerfileBuildImage.png)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerfileBuildImage.png)  
 * Start a container to check that the application runs correctly
 #
     docker container run hello:v0.1
-![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Hellofrom.png)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Hellofrom.png)  
 * Some Tips:
   * To build index.js in this linux os. First type  
   #
@@ -165,13 +165,13 @@ Build first image out of this Dockerfile and name it "hello:v0.1"
   1. Check out the image created earlier by 
   #
       docker image history 723423834c7e
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerImageHistory.png)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerImageHistory.png)  
   In the history command output, the original Alpine layers are at the bottom of the list and then each customization we added in our Dockerfile is its own step in the output. This is a powerful concept because it means that if we need to make a change to our application, it may only affect a single layer!
   #
       echo "console.log(\"this is v0.2\");" >> index.js
       docker image build -t hello:v0.2 .
   Then it is found that it using cache in 2/5 steps
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/UsingCache.png)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/UsingCache.png)  
   
  
  
