@@ -149,7 +149,8 @@ Build first image out of this Dockerfile and name it "hello:v0.1"
   #
       vi Dockerfile
   To verify the Dockerfile use the command "cat Dockerfile"  
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Hellofrom.png)
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerfileBuildImage.png)
+  * Start a container to check that the application runs correctly
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Hellofrom.png)
   
 
