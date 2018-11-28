@@ -113,6 +113,7 @@ To see a list of files that were added or changed when installed figlet. (a litt
     docker container diff 63f7e97d2f73  
 To commit the container and create an image out of it
 #
-    docker container commit 63f7e97d2f73
+    docker container commit 63f7e97d2f73  
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/ImageCreation.png)
 
 
