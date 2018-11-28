@@ -114,6 +114,12 @@ To see a list of files that were added or changed when installed figlet. (a litt
 To commit the container and create an image out of it
 #
     docker container commit 63f7e97d2f73  
-![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/ImageCreation.png)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/ImageCreation.png)  
+#
+    docker image tag 1380f5719fab ourfiglet
+    docker image ls
+    docker container run ourfiglet figlet hello  
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerOurfiglet.png)
+
 
 
