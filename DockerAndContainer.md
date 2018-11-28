@@ -161,7 +161,7 @@ Build first image out of this Dockerfile and name it "hello:v0.1"
   3. Then we told it to COPY files from our working directory in to the container. The only file we have right now is our index.js.
   4. Next we specify the WORKDIR - the directory the container should use when it starts up.
   5. And finally, we gave our container a command (CMD) to run when the container starts.
-* Image Layers
+> Image Layers
   * The images are built in *layers*, the following are *layer* learning steps
   > Layer - A Docker image is built up from a series of layers. Each layer represents an instruction in the image's Dockerfile. Each layer except the last one is read-only.  
   Check out the image created earlier by 
@@ -177,6 +177,29 @@ Build first image out of this Dockerfile and name it "hello:v0.1"
   * Docker recognized that we had already built some of these layers in our earlier image builds and since nothing had changed in those layers it could simply use a cached version of the layer, rather than pulling down code a second time and running those steps. 
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Layers%26Cache.png)  
 > Image Inspection  
+* Docker has an inspect command for images and it returns details on the container image, the commands it runs, the OS and more.
+#
+    docker image inspect alpine
+* list of information (JSON format):  
+  * the layers the image is composed of
+  * the driver used to store the layers
+  * the architecture / OS it has been created for
+  * metadata of the image
+  * …
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/ListOfInformation.png)  
+* List of layers
+#
+    docker image inspect --format "{{ json .RootFS.Layers }}" alpine
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/ListOfLayers.png)  
+Alpine is just a small base OS image so there’s just one layer:
+But when looking at custom Hello image, we can see three layers in our application
+#
+    docker image inspect --format "{{ json .RootFS.Layers }}" <image ID>
+* Docker Enterprise Edition includes private Trusted Registries with Security Scanning and Image Signing capabilities so you can further inspect and authenticate your images. In addition, there are policy controls to specify which users have access to various images, who can push and pull images, and much more.
+* Another important note about layers: each layer is immutable. As an image is created and successive layers are added, the new layers keep track of the changes from the layer below. (which is important for both security and data management.)
+* Applications that create and store data (databases, for example) can store their data in a special kind of Docker object called a volume  
+> volume - A special Docker container layer that allows data to persist and be shared separately from the container itself. Think of volumes as a way to abstract and manage your persistent data separately from the application itself.  
+
  
   
 
