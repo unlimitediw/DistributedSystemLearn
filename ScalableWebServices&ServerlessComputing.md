@@ -1,7 +1,16 @@
+### Scalable Web Services
+> Antique Web Servers
+* Serve static content
+  * Read a file from disk and send it back to the client
+  * images, HTML
+* Dynamic Content
+  * CGI Bin
+  * Executes a program
+  * Not very safe or convient for development
+  
+
 ### Serverless
-
-
-* Serverless Startup
+> Serverless Startup
   * AWS Lambda
     * Define a stateless "function" to execute for each request
     * A container will be instatiated to handle the first request
