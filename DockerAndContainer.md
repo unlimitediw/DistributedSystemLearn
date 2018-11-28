@@ -123,8 +123,25 @@ To commit the container and create an image out of it
 We can create a container and add all libraries and binaries in it and then commit it to create an image. We can use the image s pulled from the Docker Store and share this image by pushing it to a registry somewhere.  
 > Image creation using a Dockerfile  
 
-Instead of creating a static binary image, we can also use Dockerfile to create an image.Dockerfile supplies the instructions for building the image which is uselful to manage changes (how an image is built). Dockerfiles are simply text files and can be managed as source code.  
+Instead of creating a static binary image, we can also use Dockerfile to create an image. Dockerfile supplies the instructions for building the image which is uselful to manage changes (how an image is built). Dockerfiles are simply text files and can be managed as source code.  
 The following work will start by creating a file which I retrieve the hostname and display it.
+#
+    var os = require("os");
+    var hostname = os.hostname();
+    console.log("hello from " + hostname);  
+Then create a Dockerfile.txt  
+#
+    FROM alpine
+    RUN apk update && apk add nodejs
+    COPY . /app
+    WORKDIR /app
+    CMD ["node","index.js"]
+* Some Tips:
+  * To index.js in this linux os. First type  
+  #
+      vi index.js
+  And hit the "i" key to edit.  
+  End it with <esc> and then type :wq which will save the file and take me back to the command prompt.  
 
 
 
