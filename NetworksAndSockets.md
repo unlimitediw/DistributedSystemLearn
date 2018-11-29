@@ -44,10 +44,10 @@
       * server must extract IP address, port of sender from received datagram
     * transmiited data may be received out of order or lost
     * UDP provides unreliable transfer of groups of bytes(datagrams) between client and server
+  * Socket: Provides interface between OS and App
 <a name="network"></a>
 * Network: finding routes
   * Driver: Loads network data into memory
-  * Socket: Provides interface between OS and App
   * IP
     * Internet Protocol address: is a numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication. An IP address serves two principal functions: host or network interface identification and location addressing.
     * IPV4: 
