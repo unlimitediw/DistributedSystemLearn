@@ -43,6 +43,10 @@
 * Need to have a policy for resolving conflicts
   * If two versions are concurrent, they are "siblings" and return both.
   * Random, Priority based or User resolved
+* Procedure:
+  1. Initially all vector counters are zero
+  2. Each time a replica experiences a local update event, it increments its own counter in the vector by one. (Vector Clocks)
+  3. Each time two replicas a and b synchronize, they both set the elements in their copy if the vector to the maximum of the element across both counters: Va(x) = Vb(x) = max(Va(x),Vb(x)). After synchronization, the two replicas have identical version vectors.
 > Multi-Tier Backup
 * Consider a multi-tier web app backup system
   * Some tiers have a disk that must be protected
