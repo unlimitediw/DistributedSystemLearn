@@ -33,3 +33,10 @@
   * prodduct
 * Digital Agent
   
+### Tableau
+* certification dec 31
+
+### Elder Research
+* Graph
+* Database -> (store in)graph
+ * Neo4J, R- iGraph, Apache-GraphX
