@@ -40,3 +40,13 @@
 * Graph
 * Database -> (store in)graph
  * Neo4J, R- iGraph, Apache-GraphX
+
+### 2019 GW New Venture Competition
+* due February 6, 2019, at 1:00 PM EST
+
+### Amazon
+* Ask simple questions with answers you can explain
+* Underswtand issues with the DATA
+* Deal with ambiguity
+* Frame results in terms your customer can understand
+* Get a job: Explain sth predict the future, Quantify uncertainty
