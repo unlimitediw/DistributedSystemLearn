@@ -2,10 +2,9 @@
 # Docker and Containers 
 1. [Containers](#containers)  
     * [What are Containers?](#whatcontainer)
-    * [Containers and VMs](#containervsvm)
+    * [VMs vs Containers](#containervsvm)
     * [Docker Introduction](#dockerintro)
     * [Docker Image](#dockerimage)
-    * [VMs VS Containers Deep Dive](#deepdive)
 2. [Networking and Orchestration](#networkOrch)
 <a name ="containers"></a>
 ## Containers
@@ -32,15 +31,27 @@
     * Network will also allow persistence after container end
   * Life Cycle 
 <a name ="containervsvm"></a>
-### Containers and VMs
+### VMs vs Containers
 > VM  
   * APP -> OS -> VM -> Hypervisor -> Physical (notice that Application virtualization and Hosted virtualization are onside of OS)
-  * VM: NIC(Network interface), Storage and Size  
+  * VM: NIC(Network interface), Storage and Size.  
   * Hypervisor: NIC, Storage, Agents and Kernel
   
 > Container  
   * App + OS Dependences = Container -> OS -> VM -> Hypervisor -> Physical (VM may be combined using with Container  
 <a name ="dockerintro"></a>
+
+> Performance:
+* Size:
+   * VMs: range from 100~MB to 100~GB, everything but hardware is comprised inside the disk image (kernel, init system, user space programs and applications).
+   * Containers: range from 10~MB to 1~GB. The things inside the container is exclusively the process that is being run. (may create a container based on a base container that contains all the user space from a specific Linux distribution, such as Ubuntu base container which only contains the package manager and a few other user space tools)
+* Isolation:
+   * VMs: extremely difficult to escape the boundary of VM.
+   * Containers: insecure, as secure as the kernel they are running on. Escape the sandbox an reach the kernel.
+* Boot Time:
+   * VMs: several startup times which can be divided in two sections. One is the system check section that includes the x86 post, the EFI (Extensible Firmware Interface) or boot check, the kernel boot and the init startup (3~4 seconds in total). The other one is startup of the process itself takes 0.5 second.
+   * Containers: run the process and setup the sandbox. Kernel operation takes no time while the startup of process just takes about 0.5 second.
+
 ### Docker Introduction
 [LearnPage]
 > Task 0: Prerequisites
@@ -209,6 +220,4 @@ But when looking at custom Hello image, we can see three layers in our applicati
 * Applications that create and store data (databases, for example) can store their data in a special kind of Docker object called a volume  
 > volume - A special Docker container layer that allows data to persist and be shared separately from the container itself. Think of volumes as a way to abstract and manage your persistent data separately from the application itself.  
 
- 
-  
 
