@@ -1,9 +1,15 @@
 <a name="menu"></a>
 # Docker and Containers 
-2. [Containers](#containers)
-
+1. [Containers](#containers)
+  * [What are Containers?](#whatcontainer)
+  * [Containers and VMs](#containervsvm)
+  * [Docker Introduction](#dockerintro)
+  * [Docker Image](#dockerimage)
+  * [VMs VS Containers Deep Dive](#deepdive)
+2. [Networking and Orchestration](#networkOrch)
 <a name ="containers"></a>
 ## Containers
+<a name ="whatcontainer"></a>
 ### What is container?
 * Runtime OS (e.g linux): inside are processes. The container is used to isolate one process to other processes (sandbox)
   * The container process is tied in with the lifecycle of container.
@@ -25,6 +31,7 @@
     * Use it if it wants to persist any data beyond the lifecycle of the container
     * Network will also allow persistence after container end
   * Life Cycle 
+<a name ="containervsvm"></a>
 ### Containers and VMs
 > VM  
   * APP -> OS -> VM -> Hypervisor -> Physical (notice that Application virtualization and Hosted virtualization are onside of OS)
@@ -33,6 +40,7 @@
   
 > Container  
   * App + OS Dependences = Container -> OS -> VM -> Hypervisor -> Physical (VM may be combined using with Container  
+<a name ="dockerintro"></a>
 ### Docker Introduction
 [LearnPage]
 > Task 0: Prerequisites
@@ -98,7 +106,8 @@
     * use "--publish" to publish port 80 inside the container onto port 80 on the host. (80 port to 80 port directly in container)
     * --publish format flag "host_port:container_port"
   7. "docker container rm --force linux_tweet_app" shut down and remove
-### Doing more with Docker images
+<a name ="dockerimage"></a>
+### Docker images
 > Image creation from a container  
 * Running the bash shell inside the container and intalling figlet package in the container to customize things.
 #
