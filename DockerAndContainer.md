@@ -89,7 +89,7 @@
              * USER PID ... STAT START TIME COMMAND
              * root 1 ... SS 00:12 0:00 bash
              * root 14 ...R+ 00:22 0:00 ps aux
-    3. Type ```exit``` to leave the shell session. This will terminate the bash process, causing the container to exit
+    3. Type ```exit``` to leave the shell session. This will terminate the bash process, causing the container to exit.
   * Run a background MySQL container
     1. Run a new MySQL container with
        ####
@@ -102,29 +102,29 @@
         * ```--name``` will name it mydb.
         * ```-e``` will use an environment variable to specify the root password.
 
-    2. List the running containers "docker container ls".
-    3. Check what's happening in your containers by "docker container logs" and "docker container top".
-    4. List the MySQL version using "docker exec"(which allow you command inside a container) and run "mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version".
-    5. You can also use "docker exec -it mydb sh" to connect to a new shell process inside an already running container
+    2. List the running containers ```docker container ls```.
+    3. Check what's happening in your containers by ```docker container logs``` and ```docker container top```.
+    4. List the MySQL version using ```docker exec```(which allow you command inside a container) and run ```mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version```.
+    5. You can also use ```docker exec -it mydb sh``` to connect to a new shell process inside an already running container
 > Task 2: Package and run a custom app using Docker  
   
   * Build a simple website image
-  1. "cd ~/linux_tweet_app"
-  2. "cat Dockerfile"
-     * cat: concatenate command in linux
-     * From: specifies the base image to use as the starting point for this new image you're creating. For this example we're starting from nginx:latest
-     * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two filesinto the image: index.html. and a graphic that will be used on our webpage
-     * EXPOSE: documents which ports the application uses
-     * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments)
-  3. "export DOCKERID=unlimitediw"
-  4. "echo $DOCKERID"
-  5. Use the "docker image build" command to create a new Docker image using the instructions in the Dockerfile
-   * "--tag" allows us to give the image a custom name.
-   * "." tells Docker to use the current directory as the build context
+  1. ```cd ~/linux_tweet_app```
+  2. ```cat Dockerfile```
+     * cat: concatenate command in linux.
+     * From: specifies the base image to use as the starting point for this new image you're creating. For this example we're starting from nginx:latest.
+     * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two filesinto the image: index.html. and a graphic that will be used on our webpag.
+     * EXPOSE: documents which ports the application uses.
+     * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments).
+  3. ```export DOCKERID=unlimitediw```
+  4. ```echo $DOCKERID```
+  5. Use the ```docker image build``` command to create a new Docker image using the instructions in the Dockerfile
+   * ```--tag``` allows us to give the image a custom name.
+   * ```.``` tells Docker to use the current directory as the build context.
   6. Use the "docker container run" command to start a new container from the image you created.
-    * use "--publish" to publish port 80 inside the container onto port 80 on the host. (80 port to 80 port directly in container)
-    * --publish format flag "host_port:container_port"
-  7. "docker container rm --force linux_tweet_app" shut down and remove
+    * use ```--publish``` to publish port 80 inside the container onto port 80 on the host. (80 port to 80 port directly in container).
+    * ``--publish``` format flag ```host_port:container_port```.
+  7. ```docker container rm --force linux_tweet_app``` shut down and remove.
 > Summary:  
 <a name ="dockerimage"></a>
 ### Docker images
