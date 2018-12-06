@@ -75,8 +75,10 @@
     1. Run ```docker container run alpine hostname```. The container will start, execute hostname command then exit
         * Pull ```alpine:latest``` image from Docker Hub
         * The container's hostname will be displayed
+        ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/alpineHostname.PNG)
     2. Check container states after hostname processing exits(container stop) by running ```docker container ls --all```
         * Docker doesn't delete resources by default and the container still exist in the "Exited" state
+        ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/lsall.PNG)
   * Run an interactive Ubuntu container
     1. Run a Docker container and access its shell by "docker container run --interactive --tty --rm ubuntu bash"
         * ```--interactive``` says you want an interactive session.
