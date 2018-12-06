@@ -70,14 +70,14 @@
     2. Interactively: This connects you to the container similar to the way 
     3. In the background: For long-running services like websites and databases
   * Run a single task in an Alpine Linux container
-    1. Run "docker container run alpine hostname". The container will start, execute hostname command then exit
+    1. Run ```docker container run alpine hostname```. The container will start, execute hostname command then exit
         * Pull "alpine:latest" image from Docker Hub
         * The container's hostname will be displayed
-    2. Check container states after hostname processing exits(container stop) by running "docker container ls --all"
+    2. Check container states after hostname processing exits(container stop) by running ```docker container ls --all```
         * Docker doesn't delete resources by default and the container still exist in the "Exited" state
   * Run an interactive Ubuntu container
     1. Run a Docker container and access its shell by "docker container run --interactive --tty --rm ubuntu bash"
-        * "--interactive" says you want an interactive session
+        * ```--interactive``` says you want an interactive session
         * "--tty" allocates a pseudo-tty
         * "--rm" tells Docker to go ahead and remove the container when it's done exuecuting
         * bash(which is a shell, a user interface for access to an operating system) is used as main process
