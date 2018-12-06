@@ -139,6 +139,9 @@
 > Summary:  
 <a name ="dockerimage"></a>
 ### Docker images
+> Foreword:
+   * Definition: Docker Images are defined by Dockerfile which defines what goes on in the environment inside your container ([www.docker.com](https://docs.docker.com/get-started/part2/#your-new-development-environment)).  
+   * This part is mainly considering about how to create my own Image and more deeply how to build DockerFile and use it to create image.
 > Image creation from a container  
 * Running the bash shell inside the container and intalling figlet package in the container to customize things.
 #
