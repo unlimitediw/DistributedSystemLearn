@@ -46,7 +46,6 @@
   
 > Container  
   * App + OS Dependences = Container -> OS -> VM -> Hypervisor -> Physical (VM may be combined using with Container  
-<a name ="dockerintro"></a>
 
 > Performance:
 * Size:
@@ -59,6 +58,7 @@
   * VMs: several startup times which can be divided in two sections. One is the system check section that includes the x86 post, the EFI (Extensible Firmware Interface) or boot check, the kernel boot and the init startup (3~4 seconds in total). The other one is startup of the process itself takes 0.5 second.
   * Containers: run the process and setup the sandbox. Kernel operation takes no time while the startup of process just takes about 0.5 second.
 > Summary: VMs is more secure, strong in isolation and can be combined with Container (e.g Docker: VM + Container) while Container is more lightweight (less resource consumption, startup faster, easy to deploy and specify resource just for application).
+<a name ="dockerintro"></a>
 ### Docker Introduction
 > Foreword:  
   * Docker unlocks the potential of your organization by giving developers and IT the freedom to build, manage and secure business-critical applications without the fear of technology or infrastructure lock-in ([www.docker.com](https://www.docker.com/why-docker)).
