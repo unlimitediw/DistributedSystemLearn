@@ -220,4 +220,3 @@ But when looking at custom Hello image, we can see three layers in our applicati
 * Applications that create and store data (databases, for example) can store their data in a special kind of Docker object called a volume  
 > volume - A special Docker container layer that allows data to persist and be shared separately from the container itself. Think of volumes as a way to abstract and manage your persistent data separately from the application itself.  
 
-
