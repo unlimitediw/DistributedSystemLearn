@@ -1,7 +1,7 @@
 <a name="menu"></a>
 # Docker and Containers 
 1. [Containers](#containers)  
-    * [What are Containers?](#whatcontainer)
+    * [Containers Introduction](#whatcontainer)
     * [VMs vs Containers](#containervsvm)
     * [Docker Introduction](#dockerintro)
     * [Docker Image](#dockerimage)
@@ -9,7 +9,7 @@
 <a name ="containers"></a>
 ## Containers
 <a name ="whatcontainer"></a>
-### What is Container?
+### Containers Introduction
 > Definition: A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another ([www.docker.com](https://www.docker.com/resources/what-container)).  
 
 > Not just a Container  
