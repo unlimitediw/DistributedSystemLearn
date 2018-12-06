@@ -1,11 +1,11 @@
 <a name="menu"></a>
 # Docker and Containers 
-1. [Containers](#containers)
-  * [What are Containers?](#whatcontainer)
-  * [Containers and VMs](#containervsvm)
-  * [Docker Introduction](#dockerintro)
-  * [Docker Image](#dockerimage)
-  * [VMs VS Containers Deep Dive](#deepdive)
+1. [Containers](#containers)  
+    * [What are Containers?](#whatcontainer)
+    * [Containers and VMs](#containervsvm)
+    * [Docker Introduction](#dockerintro)
+    * [Docker Image](#dockerimage)
+    * [VMs VS Containers Deep Dive](#deepdive)
 2. [Networking and Orchestration](#networkOrch)
 <a name ="containers"></a>
 ## Containers
