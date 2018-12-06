@@ -138,7 +138,7 @@
     * use ```--publish``` to publish port 80 inside the container onto port 80 on the host. (80 port to 80 port directly in container).
     * ``--publish``` format flag ```host_port:container_port```.
   7. ```docker container rm --force linux_tweet_app``` shut down and remove.
-> Summary:  
+> Summary: In this docker tutoriall, The image instance of the container is built by pulling from the DockerHub and Dockerfile. Each of the process is running in its own container, and to manage these container you need to go inside of it or exit. The hierarchical structure, isolation of container and convenient commands make the process management becomes much easier, secure and standard.
 <a name ="dockerimage"></a>
 ### Docker images
 > Foreword:
