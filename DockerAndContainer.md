@@ -124,12 +124,14 @@
      * From: specifies the base image to use as the starting point for this new image you're creating. For this example we're starting from nginx:latest.
      * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two filesinto the image: index.html. and a graphic that will be used on our webpag.
      * EXPOSE: documents which ports the application uses.
-     * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments).
+     * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments).  
+     ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/displayContent.PNG)
   3. ```export DOCKERID=unlimitediw```
   4. ```echo $DOCKERID```
   5. Use the ```docker image build``` command to create a new Docker image using the instructions in the Dockerfile
    * ```--tag``` allows us to give the image a custom name.
-   * ```.``` tells Docker to use the current directory as the build context.
+   * ```.``` tells Docker to use the current directory as the build context.  
+   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/DockerImageBuild.PNG)
   6. Use the "docker container run" command to start a new container from the image you created.
     * use ```--publish``` to publish port 80 inside the container onto port 80 on the host. (80 port to 80 port directly in container).
     * ``--publish``` format flag ```host_port:container_port```.
