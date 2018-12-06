@@ -68,15 +68,15 @@
   * It need a linux environment and a DockerID
 > Task 1: Run some simple Docker containers
   * Three different ways to use containers:
-    1. To run a single task: This could be a shell script or a custom app.
-    2. Interactively: This connects you to the container similar to the way 
-    3. In the background: For long-running services like websites and databases
+    * To run a single task: This could be a shell script or a custom app.
+    * Interactively: This connects you to the container similar to the way 
+    * In the background: For long-running services like websites and databases
   * Run a single task in an Alpine Linux container
-    1. Run ```docker container run alpine hostname```. The container will start, execute hostname command then exit
+    * Run ```docker container run alpine hostname```. The container will start, execute hostname command then exit
         * Pull ```alpine:latest``` image from Docker Hub
         * The container's hostname will be displayed  
         ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/alpineHostname.PNG)
-    2. Check container states after hostname processing exits(container stop) by running ```docker container ls --all```
+    * Check container states after hostname processing exits(container stop) by running ```docker container ls --all```
         * Docker doesn't delete resources by default and the container still exist in the "Exited" state  
         ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/lsall.PNG)
   * Run an interactive Ubuntu container
