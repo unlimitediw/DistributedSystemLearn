@@ -270,4 +270,6 @@ But when looking at custom Hello image, we can see three layers in our applicati
 <a name ="dockernetlab"></a>
 ### Docker Networking Hands-on Lab
 > Foreword
-  * 
+  * This lab is about Key Docker Networking concepts learning such as 'bridge' and 'overlay networking' and finally will create a service and test it.
+  
+> Networking Basic
