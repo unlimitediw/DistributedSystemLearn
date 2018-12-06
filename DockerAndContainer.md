@@ -80,41 +80,41 @@
         * Docker doesn't delete resources by default and the container still exist in the "Exited" state  
         ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/lsall.PNG)
   * Run an interactive Ubuntu container
-  1. Run a Docker container and access its shell by "docker container run --interactive --tty --rm ubuntu bash"
+    1. Run a Docker container and access its shell by "docker container run --interactive --tty --rm ubuntu bash"
       * ```--interactive``` says you want an interactive session.
       * ```--tty``` allocates a pseudo-tty.
       * ```--rm``` tells Docker to go ahead and remove the container when it's done exuecuting.
       * bash(which is a shell, a user interface for access to an operating system) is used as main process.
       * Now you are in the bash shell.
       * When the container start you will drop into the bash shell with the default prompt root@<container id>:/#. Docker has attached to the shell in the container, relying input and output between your local session in the container.
-  2. Run ```ls /```, ```ps aux``` and ```cat/etc/issue```
-      * ```ls /``` list the contents of the root director in the container.
-      * ```ps aux``` show running processes in the container.
-           * USER PID ... STAT START TIME COMMAND
-           * root 1 ... SS 00:12 0:00 bash
-           * root 14 ...R+ 00:22 0:00 ps aux  
- ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/PreviewUbuntu.PNG)
+    2. Run ```ls /```, ```ps aux``` and ```cat/etc/issue```
+       * ```ls /``` list the contents of the root director in the container.
+       * ```ps aux``` show running processes in the container.
+          * USER PID ... STAT START TIME COMMAND
+          * root 1 ... SS 00:12 0:00 bash
+          * root 14 ...R+ 00:22 0:00 ps aux  
+   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/PreviewUbuntu.PNG)
   3. Type ```exit``` to leave the shell session. This will terminate the bash process, causing the container to exit.
   * Run a background MySQL container
-  1. Run a new MySQL container with
-     ####
-         docker container run \
-         --detach \
-         --name mydb \
-         -e MYSQL_ROOT_PASSWORD=my-secret-pw \
-         mysql:latest
-      * ```--detach``` will run the container in the background.
-      * ```--name``` will name it mydb.
-      * ```-e``` will use an environment variable to specify the root password.
+    1. Run a new MySQL container with
+       ####
+           docker container run \
+           --detach \
+           --name mydb \
+           -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+           mysql:latest
+        * ```--detach``` will run the container in the background.
+        * ```--name``` will name it mydb.
+        * ```-e``` will use an environment variable to specify the root password.
 
-  2. List the running containers ```docker container ls```.  
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/lsall.PNG)
-  3. Check what's happening in your containers by ```docker container logs``` and ```docker container top```.  
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/dblogs.PNG)
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/deamon.PNG)
-  4. List the MySQL version using ```docker exec```(which allow you command inside a container) and run ```mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version```.  
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/checkVersion.PNG)
-  5. You can also use ```docker exec -it mydb sh``` to connect to a new shell process inside an already running container
+    2. List the running containers ```docker container ls```.  
+    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/lsall.PNG)
+    3. Check what's happening in your containers by ```docker container logs``` and ```docker container top```.  
+    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/dblogs.PNG)
+    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/deamon.PNG)
+    4. List the MySQL version using ```docker exec```(which allow you command inside a container) and run ```mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version```.  
+    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/checkVersion.PNG)
+    5. You can also use ```docker exec -it mydb sh``` to connect to a new shell process inside an already running container
 > Task 2: Package and run a custom app using Docker  
   
   * Build a simple website image
