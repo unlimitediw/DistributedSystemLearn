@@ -10,7 +10,7 @@
 ## Containers
 <a name ="whatcontainer"></a>
 ### What is Container?
-> Definition: A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another ([reference](https://www.docker.com/resources/what-container)).
+> Definition: A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another ([reference](https://www.docker.com/resources/what-container)).  
 > Not just a Container  
 * Runtime OS (e.g linux): inside are processes. The container is used to isolate one process to other processes (sandbox)
   * The container process is tied in with the lifecycle of container.
