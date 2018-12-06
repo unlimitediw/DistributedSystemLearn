@@ -212,7 +212,7 @@ Build first image out of this Dockerfile and name it "hello:v0.1"
   #
       echo "console.log(\"this is v0.2\");" >> index.js
       docker image build -t hello:v0.2 .
-  Then it is found that it using cache in 2/5 steps
+  Then it is found that it uses cache in 2/5 steps
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/UsingCache.png)
   * Docker recognized that we had already built some of these layers in our earlier image builds and since nothing had changed in those layers it could simply use a cached version of the layer, rather than pulling down code a second time and running those steps. 
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/Layers%26Cache.png)  
