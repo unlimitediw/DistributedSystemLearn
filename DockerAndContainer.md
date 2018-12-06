@@ -141,7 +141,7 @@
 ### Docker images
 > Foreword:
    * Definition: Docker Images are defined by Dockerfile which defines what goes on in the environment inside your container ([www.docker.com](https://docs.docker.com/get-started/part2/#your-new-development-environment)).  
-   * This part is mainly considering about how to create my own Image and more deeply how to build DockerFile and use it to create image.
+   * This part is mainly considering about how to create my own Image and more deeply how to build DockerFile and use it to create image. At the same time, there are many important concepts such as 'layers' and 'volumes' and 'image inspection'
 > Image creation from a container  
 * Running the bash shell inside the container and intalling figlet package in the container to customize things.
 #
@@ -243,3 +243,4 @@ But when looking at custom Hello image, we can see three layers in our applicati
 * Applications that create and store data (databases, for example) can store their data in a special kind of Docker object called a volume  
 > volume - A special Docker container layer that allows data to persist and be shared separately from the container itself. Think of volumes as a way to abstract and manage your persistent data separately from the application itself.  
 
+> Summary: In this part, I create the dockerfile(text) diretly on Linux and take it to build my own image and run the container. The general process of it is FROM, RUN, COPY, WORKDIR and CMD and we also need to consder the version control of image layers and we can do it by image inspection.
