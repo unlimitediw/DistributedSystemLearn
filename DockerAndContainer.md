@@ -13,9 +13,12 @@
 * Runtime OS (e.g linux): inside are processes. The container is used to isolate one process to other processes (sandbox)
   * The container process is tied in with the lifecycle of container.
 * Container Image
-  * Contains *binary* state: such as VMDK(Virtual Machine Disk) is a disk image OVA(Open Virtual Appliance) is an image for VM.
-  * Tree effectively, concentrate specific things in specific places
+  * Container is the instance of image.
+  * Contains *binary* state (representations): such as VMDK(Virtual Machine Disk) is a disk image OVA(Open Virtual Appliance) is an image for VM.
+  * Tree effectively concentrate specific things in specific places.
 * Dockerfile
+  * Dockerfile is an environment in a text file.
+  * Dockerfile configures and ends up with creating an Image.
   * Syntax(e.g)
     * From: busybox (within here we can run any number of things that we want to configure the image that the docker file is going to create.
 * Runtime OS and Dockerfile can both communicate with Image.
@@ -29,7 +32,8 @@
   * Storage inside(but beyond lifecyle) (Volume, a persistent area of storage) or network (push it out on network)
     * Use it if it wants to persist any data beyond the lifecycle of the container
     * Network will also allow persistence after container end
-  * Life Cycle 
+  * Container Life Cycle
+> Summary: Container is a sandbox that allows user to ioslate their processes while Container Image (created by dockerfile) likes a manager allows sharing and concetrates specific things in specific area. The Docker Host links all these things together.
 <a name ="containervsvm"></a>
 ### VMs vs Containers
 > VM  
