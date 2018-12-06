@@ -60,7 +60,7 @@
    * Containers: run the process and setup the sandbox. Kernel operation takes no time while the startup of process just takes about 0.5 second.
 > Summary: VMs is more secure, strong in isolation and can be combined with Container (e.g Docker: VM + Container) while Container is more lightweight (less resource consumption, startup faster, easy to deploy and specify resource just for application).
 ### Docker Introduction
-> Foreword: I will go through the docker beginner tutorial in this part and as we know, docker is based on Linux so I may use some Linux commands such as 'ls' and 'cat'. There are two tasks: run and modify a MySQL container and a custom app and it will give us a view of the processes inside the container and the way to build and modify a container with Image.  
+> Foreword: I will go through the beginner tutorial with my explanations for some Linux commands such as 'cat' and 'echo' and interpret the meaning of each command. There are two tasks: run and modify a MySQL container and a custom app and it will give us a view of the processes inside the container and the way to build and modify a container with Image.  
 
 > Task 0: Prerequisites
   * It need a linux environment and a DockerID
