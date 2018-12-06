@@ -36,7 +36,7 @@
     * Use it if it wants to persist any data beyond the lifecycle of the container
     * Network will also allow persistence after container end
   * Container Life Cycle
-> Summary: Container is a sandbox that allows user to ioslate their processes while Container Image (created by dockerfile) likes a manager allows sharing and concetrates specific things in specific area. The Docker Host links all these things together.
+> Summary: Container is a sandbox that allows user to ioslate their processes while Container Image (created by dockerfile) likes a manager allows sharing and concetrates specific things in specific area. The Docker Host links all these things together and provides a standard, lightweight and secure Container.
 <a name ="containervsvm"></a>
 ### VMs vs Containers
 > VM  
