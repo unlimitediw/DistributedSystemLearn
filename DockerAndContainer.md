@@ -43,8 +43,8 @@
 
 > Performance:
 * Size:
-   * VMs: range from 100~MB to 100~GB, everything but hardware is comprised inside the disk image (kernel, init system, user space programs and applications).
-   * Containers: range from 10~MB to 1~GB. The things inside the container is exclusively the process that is being run. (may create a container based on a base container that contains all the user space from a specific Linux distribution, such as Ubuntu base container which only contains the package manager and a few other user space tools)
+   * VMs: range from 100MB to 100GB, everything but hardware is comprised inside the disk image (kernel, init system, user space programs and applications).
+   * Containers: range from 10MB to 1GB. The things inside the container is exclusively the process that is being run. (may create a container based on a base container that contains all the user space from a specific Linux distribution, such as Ubuntu base container which only contains the package manager and a few other user space tools)
 * Isolation:
    * VMs: extremely difficult to escape the boundary of VM.
    * Containers: insecure, as secure as the kernel they are running on. Escape the sandbox an reach the kernel.
