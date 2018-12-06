@@ -256,7 +256,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
 * Docker Networking connect docker together.
 
 > Docker Orchestration
-* Container orchestration is all about managing the lifecycles of containers, especially in large, dynamic environments. Software teams use container orchestration to control and automate many tasks (@[Isaac Eldridge](https://blog.newrelic.com/author/isaaceldridge/)):
+* Container orchestration is used to manage containers in different ways ([Isaac Eldridge](https://blog.newrelic.com/author/isaaceldridge/)):
   * Provisioning and deployment of containers
   * Redundancy and availability of containers
   * Scaling up or removing containers to spread application load evenly across host infrastructure
