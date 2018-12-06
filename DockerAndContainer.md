@@ -94,7 +94,7 @@
           * root 1 ... SS 00:12 0:00 bash
           * root 14 ...R+ 00:22 0:00 ps aux  
    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/PreviewUbuntu.PNG)
-  3. Type ```exit``` to leave the shell session. This will terminate the bash process, causing the container to exit.
+    3. Type ```exit``` to leave the shell session. This will terminate the bash process, causing the container to exit.
   * Run a background MySQL container
     1. Run a new MySQL container with
        ####
