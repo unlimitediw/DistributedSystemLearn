@@ -57,7 +57,7 @@
    * Containers: run the process and setup the sandbox. Kernel operation takes no time while the startup of process just takes about 0.5 second.
 > Summary: VMs is more secure, strong in isolation and can be combined with Container (e.g Docker: VM + Container) while Container is more lightweight (less resource consumption, startup faster, easy to deploy and specify resource just for application).
 ### Docker Introduction
-> Foreword: I will go through the docker beginner tutorial in this part and as we know, docker is based on Linux so I may use some Linux commands such as ls and cat. There are two tasks: run and modify a MySQL container and a custom app which will give us a view of the processes inside the container and the way to build and modify a container with image.  
+> Foreword: I will go through the docker beginner tutorial in this part and as we know, docker is based on Linux so I may use some Linux commands such as 'ls' and 'cat'. There are two tasks: run and modify a MySQL container and a custom app and it will give us a view of the processes inside the container and the way to build and modify a container with Image.  
 
 > Task 0: Prerequisites
   * It need a linux environment and a DockerID
@@ -103,7 +103,7 @@
     3. Check what's happening in your containers by "docker container logs" and "docker container top".
     4. List the MySQL version using "docker exec"(which allow you command inside a container) and run "mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version".
     5. You can also use "docker exec -it mydb sh" to connect to a new shell process inside an already running container
-  > Task 2: Package and run a custom app using Docker  
+> Task 2: Package and run a custom app using Docker  
   
   * Build a simple website image
   1. "cd ~/linux_tweet_app"
@@ -122,6 +122,7 @@
     * use "--publish" to publish port 80 inside the container onto port 80 on the host. (80 port to 80 port directly in container)
     * --publish format flag "host_port:container_port"
   7. "docker container rm --force linux_tweet_app" shut down and remove
+> Summary:  
 <a name ="dockerimage"></a>
 ### Docker images
 > Image creation from a container  
