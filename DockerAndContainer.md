@@ -6,6 +6,8 @@
     * [Docker Introduction](#dockerintro)
     * [Docker Image](#dockerimage)
 2. [Networking and Orchestration](#networkOrch)
+    * [Introduction](#netorcintro)
+    * [Docker Networking Hands-on Lab](#dockernetlab)
 <a name ="containers"></a>
 ## Containers
 <a name ="whatcontainer"></a>
@@ -247,3 +249,25 @@ But when looking at custom Hello image, we can see three layers in our applicati
 
 <a name ="networkOrch"></a>
 ## Networking and Orchestration
+
+<a name ="netorcintro"></a>
+### Introduction
+> Docker Networking
+* Docker Networking connect docker together.
+
+> Docker Orchestration
+* Container orchestration is all about managing the lifecycles of containers, especially in large, dynamic environments. Software teams use container orchestration to control and automate many tasks (@[Isaac Eldridge](https://blog.newrelic.com/author/isaaceldridge/)):
+  * Provisioning and deployment of containers
+  * Redundancy and availability of containers
+  * Scaling up or removing containers to spread application load evenly across host infrastructure
+  * Movement of containers from one host to another if there is a shortage of resources in a host, or if a host dies
+  * Allocation of resources between containers
+  * External exposure of services running in a container with the outside world
+  * Load balancing of service discovery between containers
+  * Health monitoring of containers and hosts
+  * Configuration of an application in relation to the containers running it
+
+<a name ="dockernetlab"></a>
+### Docker Networking Hands-on Lab
+> Foreword
+  * 
