@@ -270,7 +270,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
 <a name ="dockernetlab"></a>
 ### Docker Networking Hands-on Lab
 > Foreword
-  * This lab is about Key Docker Networking concepts learning such as 'bridge' and 'overlay networking' and finally will create a service and test it.
+  * This lab is about Key Docker Networking concepts learning such as 'bridge' and 'overlay networking' and finally will create a service and test it. In this lab, I specifically create a gwuservice and test some different value to check the key point like vip address and ping outside/inside.
   
 > Networking Basic:
 * The Docker Network Command List:
@@ -318,7 +318,30 @@ But when looking at custom Hello image, we can see three layers in our applicati
 ![](swarmjoin)
 * Create an overlay network
   * Create the overlay network by ```docker network create -d overlay overnet``` and use ```docker network ls``` to verify it
-
+  * As we can see there are to overlay (driver) network named "ingress" and "overnet" in the scoped in the swarm. And be attention the overnet network should only appear when a host runs a task from a service that is created on the network and we can use ```docker network inspect overnet``` to show more details.
+  ![](overlaynetwork)
+  * Create a service: create a new service called gwuservice on the overnet network with two tasks/replicas.
+  ####
+      docker service create --name gwuservice \
+      --network overnet \
+      --replicas 2 \
+      ubuntu sleep infinity
+  ![](gwuservice)
+  * And present it by ```docker service ps gwuservice```: 
+  ![](gwuserviceReplica)
+  * Now run ```docker network inspect overnet```. We can find it is in the container with ip address "10.0.0.7" running on the node1 and "10.0.0.8" on the node2.
+* Test the network
+  * First we need to log on the service task by ```docker exec -it dockerID /bin/bash```. (I load to the gwuservice node2 which has ip 10.0.0.8 here)
+  * Install the ping program and ping it again ```ping -c5 10.0.0.8``` and we can find that both task from the gwuservice are on the same overlay network.  
+  ![](node2ping)
+* Test the service discovery.
+  * Run ```cat /etc/resolv.conf``` to get the "nameserver 127.0.0.11". This value will sends all DNS quries from container to an embedded DNS reolver running inside the container listening on 127.0.0.11:53
+  * The container is also be able to ping the gwuservice by name and notice that the value returned from ping is the same as the gwuservice vip(virtual ip address).  
+  ![](vip)
+  ![](vipping)
+* finally clean upp all.
+  
+  
   
   
   
