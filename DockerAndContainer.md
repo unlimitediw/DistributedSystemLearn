@@ -272,4 +272,38 @@ But when looking at custom Hello image, we can see three layers in our applicati
 > Foreword
   * This lab is about Key Docker Networking concepts learning such as 'bridge' and 'overlay networking' and finally will create a service and test it.
   
-> Networking Basic
+> Networking Basic:
+* The Docker Network Command List:
+  * ```docker network```: This is the main command for configuring and managing container networks which allows you to create a network, list existing network, inspect network, remove networks and connect/disconnect networks.
+  ![](dockernetwork)
+  * ```docker network ls```: Have a view of the existing container networks on the current Docker host. From the terminal, we can see that there are 'brige', 'host' and 'none; in the container network
+  ![](dockernetworkls)
+  * ```docker network inspect```: This command is used to view network configuration details which includes the details of name, ID, driver, IPAM(Internet Protocol Address Management) driver, subnet info, connected container and some boolean values such as Ingress, Internal and so on. Apart from the tutorial command ```docker network inspect bridge``` I alse try the ```docker network inspect host``` to get the host configuration details which are showed below.  
+  ![](dockernetworkhost)
+  * As we can see, bridge provides more options such as 'enable_icc' and 'host_binding_ipv4'.  
+  ![](dockerhostdiff)
+  * ```docker info```: This command can list the information about a Docker installation.  
+  ![](dockerinfo)
+
+> Bridge Networking
+* Basic steps:
+  * We first list the docker network with command ```docker network ls``` and we can find that all the network and driver are connected. However, they just has the same name! Taking the 'bridge' as an example, It has the same network and driver name and is scoped locally which means that the network only exists on the Docker host. All networks using the bridge driver which provides single-host networking and all networks created with the bridge driver are based on a Linux bridge.
+  * Use the ```apk update``` and ```apk add bridge``` commands to fetch and add bridge packages.
+  * Use ```brctl show``` to list the bridges on the Docker Host and it is showing that there is no interface connected to it currently.
+  ![](bridgelist)
+  * We can see the details of the 'bridge0' with command ```ip a```.  
+  ![](ipa)
+* Connect a container
+  * The bridge network is the default newtork for new container.
+  * ```docker run -dt ubuntu sleep infinity```: This command can create a new Ubuntu network.
+  * I create two containers here and use ```docker ps``` to verify my example containers.  
+  ![](dockerps)
+  * And as there is not network is specified on the ```docker run``` command, the containers will be added to bridge network.
+  ![](containersnow)
+  * Now we use the ```docker network inspect bridge``` again to show the new containers connect to the bridge.
+  ![](bridgeconnect)
+* Test network connectivity
+  *
+  
+  
+  
