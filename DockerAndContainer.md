@@ -1,4 +1,4 @@
-*All the report is original except a little concept definition from [Docker Doc](https://docs.docker.com/) and [Docker classroon](https://training.play-with-docker.com/)
+*All material in the report is original except several concept definitions from [Docker Doc](https://docs.docker.com/) and [Docker classroon](https://training.play-with-docker.com/)
 
 <a name="menu"></a>
 # Docker and Containers 
