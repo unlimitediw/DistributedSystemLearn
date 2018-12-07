@@ -1,3 +1,5 @@
+*All the report is original except a little concept definition from [Docker Doc](https://docs.docker.com/) and [Docker classroon](https://training.play-with-docker.com/)
+
 <a name="menu"></a>
 # Docker and Containers 
 1. [Containers](#containers)  
@@ -380,10 +382,13 @@ But when looking at custom Hello image, we can see three layers in our applicati
     ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2ymlexample.PNG)
   * Deploy it by ```docker stack deploy --compose-file=docker-stack.yml voting_stack```. In the voting App we have 6 service and we can check it by ```docker stack ls``` and got the detail of each stack by ```docker stack services voting_stack```.
   * We can run the ```docker service ps voting_stack_vote``` to get the task running for each node. This Apps has a built-in SWARM VISUALIZER to show it is setup and running.
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/votingstack.PNG)\\
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/votingstack.PNG)  
   * Here are the front-end web UI of the Application  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2frontend.PNG)
-  * In  
+  * In this architecture, Swarm has three component:
+    * Stack: It is a group of interrelated services and dependencies and is orchestrated as a unit.
+    * Tasks: Atomic unit of a service and scheduling in Docker. One container per task!
+    * Services: Including a container image, number of replicas(tasks), ports and update policy.
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/SSTarch.PNG)
   
 
@@ -393,6 +398,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2addworker.PNG)
    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2votingTable.PNG)
    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2update%20service.PNG)
+   * After scaling the voting_stack_vote at node2, the number of tasks in vote of voting_stack_node2 increase to 5.
    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2afterstacjArch.PNG)
 
 > Summary
