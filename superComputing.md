@@ -40,3 +40,10 @@
 > Map Reudce Flow
 
 * Input files -> Map -> Key-value -> Reudce -> Output
+
+> Storm
+
+* Like Spark
+* Hadoop is for batch, Storm is for stram
+
+> Edge Computing!!!
