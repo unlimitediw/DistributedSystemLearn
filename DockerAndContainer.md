@@ -381,7 +381,13 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * We can run the ```docker service ps voting_stack_vote``` to get the task running for each node. This Apps has a built-in SWARM VISUALIZER to show it is setup and running.
   ![](votingstack)
   ![](SSTarch)
-  
+
+* Scaling an Application
+   * Use ```docker service scale voting_stack_vote=5``` to change the number of vote service to 5 adn use ```docker services voting_stack``` to check it.
+   ![](after)
+   ![](changedarch)
+
+> Summary
 
   
   
