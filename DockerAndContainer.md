@@ -359,12 +359,12 @@ But when looking at custom Hello image, we can see three layers in our applicati
 * Initialize Your Swarm
   * As we did in last section, use ```docker swarm init --advertise-addr $(hostname -i)``` to initialize Docker Swarm Mode manager and join the worker node to swarm by ```docker swarm join -token ...``` (There are 2 node terminal, run manager and worker commands respectively).
   * Now, we have one manager and one worker.  
-  ![](twonodes)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2twonodes.PNG)
 
 * Show Swarm Members
   * Show the swarm members with command ```docker node ls```. There is a node1 whose MANAGER STATUS is Leader due to it is the first manager in the node list and if this node go down for some reasons, the other managers will elect a new leader.
   * There is a view of the Swarm architecture:  
-  ![](swarmarch)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2swarmArch.PNG)
 
 * Clone the Voting App
   * use git clone ```git clone https://github.com/docker/example-voting-app``` to get the voting app material.
@@ -376,16 +376,16 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * Format:  
     Service name  
     How the service run(image for particular service, ports and networks and labeld replicas)  
-    ![](ymlformat)
+    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2ymlexample.PNG)
   * Deploy it by ```docker stack deploy --compose-file=docker-stack.yml voting_stack```. In the voting App we have 6 service and we can check it by ```docker stack ls``` and got the detail of each stack by ```docker stack services voting_stack```.
   * We can run the ```docker service ps voting_stack_vote``` to get the task running for each node. This Apps has a built-in SWARM VISUALIZER to show it is setup and running.
-  ![](votingstack)
-  ![](SSTarch)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/votingstack.PNG)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/SSTarch.PNG)
 
 * Scaling an Application
    * Use ```docker service scale voting_stack_vote=5``` to change the number of vote service to 5 adn use ```docker services voting_stack``` to check it.
-   ![](after)
-   ![](changedarch)
+   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2update%20service.PNG)
+   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2afterstacjArch.PNG)
 
 > Summary
 
