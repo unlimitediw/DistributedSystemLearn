@@ -411,7 +411,8 @@ But when looking at custom Hello image, we can see three layers in our applicati
    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2afterstacjArch.PNG)
 
 > Summary:
-  * Swarm is an architecture for node(container) management, and the manager nodes can work for 
+  * Swarm is an architecture for node(container) management, and the manager nodes allow running the docker stack and service commands. For instance, we run stack and service command to configure the voting app in the node 1 in the lab and node2 is just a worker joined in the swarm. With the manager node, we can add vote, display front-end interface and so on. In the more higher level, we have stack which is a multi-service app running on the Swarm architecture which allows us to manage all the nodes and it should be through the manager.
+
 
   
   
