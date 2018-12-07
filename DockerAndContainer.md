@@ -8,6 +8,7 @@
 2. [Networking and Orchestration](#networkOrch)
     * [Introduction](#netorcintro)
     * [Docker Networking Hands-on Lab](#dockernetlab)
+    * [Swarm Mode Introduction Lab](#swarm)
 <a name ="containers"></a>
 ## Containers
 <a name ="whatcontainer"></a>
@@ -345,10 +346,11 @@ But when looking at custom Hello image, we can see three layers in our applicati
 > Summary: 
    * The network performance inside and outside of the container is basically no difference. After comparing pinging "github.com" both inside and outside, the RTT only is different in 0.001 ms.
    * There are many kind of driver for containers networking such as bridge(default) and overlay and they are scoped in local and swarm respectively. Generally speaking, the bridge is created for connection and the overlay can be used to create a virtual network between seperate host even itself and it is build over an existing netwrok. May be this is the reason why it is called overnet.
-   * There are many powerful function for inspect and manage network but since we can create many containers in a OS, we should still care about the management which large scale interconnect in my opinion.
+   * There are many powerful commands for inspecting and managing network but since we can create many containers in a OS, we should still care about the management which large scale interconnect in my opinion.
  
-  
-  
+<a name ="swarm"></a>  
+### Swarm Mode Introduction Lab
+
   
   
   
