@@ -275,71 +275,71 @@ But when looking at custom Hello image, we can see three layers in our applicati
 > Networking Basic:
 * The Docker Network Command List:
   * ```docker network```: This is the main command for configuring and managing container networks which allows you to create a network, list existing network, inspect network, remove networks and connect/disconnect networks.
-  ![](dockernetwork)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1dockernetwork.PNG)
   * ```docker network ls```: Have a view of the existing container networks on the current Docker host. From the terminal, we can see that there are 'brige', 'host' and 'none; in the container network
-  ![](dockernetworkls)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1dockernetworkls.PNG)
   * ```docker network inspect```: This command is used to view network configuration details which includes the details of name, ID, driver, IPAM(Internet Protocol Address Management) driver, subnet info, connected container and some boolean values such as Ingress, Internal and so on. Apart from the tutorial command ```docker network inspect bridge``` I alse try the ```docker network inspect host``` to get the host configuration details which are showed below.  
-  ![](dockernetworkhost)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1dockernetworkhost.PNG)
   * As we can see, bridge provides more options such as 'enable_icc' and 'host_binding_ipv4'.  
-  ![](dockerhostdiff)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1bridgehostdiff.PNG)
   * ```docker info```: This command can list the information about a Docker installation.  
-  ![](dockerinfo)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1dockerinfo.PNG)
 
 > Bridge Networking
 * Basic steps:
   * We first list the docker network with command ```docker network ls``` and we can find that all the network and driver are connected. However, they just has the same name! Taking the 'bridge' as an example, It has the same network and driver name and is scoped locally which means that the network only exists on the Docker host. All networks using the bridge driver which provides single-host networking and all networks created with the bridge driver are based on a Linux bridge.
   * Use the ```apk update``` and ```apk add bridge``` commands to fetch and add bridge packages.
   * Use ```brctl show``` to list the bridges on the Docker Host and it is showing that there is no interface connected to it currently.
-  ![](bridgelist)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1bridgelist.PNG)
   * We can see the details of the 'bridge0' with command ```ip a```.  
-  ![](ipa)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1ipa.PNG)
 * Connect a container
   * The bridge network is the default newtork for new container.
   * ```docker run -dt ubuntu sleep infinity```: This command can create a new Ubuntu network.
   * I create two containers here and use ```docker ps``` to verify my example containers.  
-  ![](dockerps)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1dockerps.PNG)
   * And as there is not network is specified on the ```docker run``` command, the containers will be added to bridge network.
   ![](containersnow)
   * Now we use the ```docker network inspect bridge``` again to show the new containers connect to the bridge.
-  ![](bridgeconnect)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1bridgeconnects.PNG)
 * Test network connectivity
   * Get the IP address of my own environment by ```ifconfig``` and ping it by ```ping -c5 172.17.0.1```. The replies show that the Docker host can ping the container over the bridge network. The container can also ping the outside ip such as ```ping -c5 github.com```.
   * After install the ping program by ```apt-get update && apt-get install -y iputils-ping```, we can ping both the Ip address inside of the container.  
-  ![](pinginside)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1pinginside.PNG)
   * Remeber to stop the container by ```docker stop containerid``` after ```exit```.
 * Configure NAT for external connectivity
   * In this step, we will create a new NGINX container and map port 8080 on the Docker host to port 80 inside of the container which means the traffic that hits the Docker host on port 8080 will be passed on to port 80 inside of the container.
   * The container image file is pulling from "library/nginx" and we start it by ```docker run --name web1 -d -p 8080:80 nginx```. Run ```docker ps``` to see the container details and find the Port of it is showing as "0.0.0.0:8080->80/tcp". It is show that the web1 container is running NGINX and port maps port 8080 on all host interface to port 80 inside the web1 container which makes the port mapping effectively and accessible from external sources by the Docker hosts IP address on port 8080.  
   * Connect with outside world (web server) with this port now ```curl 192.168.0.32:8080```.  
-  ![](nginxsuccess)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1nginxsuccess.PNG)
 > Overlay Networking
 * Works: Initialize a new Swarm, join a single worker node and verify the operations worked.
 * Initiliaze a Swarm node by ```docker swarm init --advertise-addr $(hostname -i)``` and join it by ```docker swarm join ...``` and check it with ```docker node ls```.
-![](swarmjoin)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1swarmjoinnode.PNG)
 * Create an overlay network
   * Create the overlay network by ```docker network create -d overlay overnet``` and use ```docker network ls``` to verify it
   * As we can see there are to overlay (driver) network named "ingress" and "overnet" in the scoped in the swarm. And be attention the overnet network should only appear when a host runs a task from a service that is created on the network and we can use ```docker network inspect overnet``` to show more details.
-  ![](overlaynetwork)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1overlaynetwork.PNG)
   * Create a service: create a new service called gwuservice on the overnet network with two tasks/replicas.
   ####
       docker service create --name gwuservice \
       --network overnet \
       --replicas 2 \
       ubuntu sleep infinity
-  ![](gwuservice)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1gwuservice.PNG)
   * And present it by ```docker service ps gwuservice```: 
-  ![](gwuserviceReplica)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1gwuserviceReplicas.PNG)
   * Now run ```docker network inspect overnet```. We can find it is in the container with ip address "10.0.0.7" running on the node1 and "10.0.0.8" on the node2.
 * Test the network
   * First we need to log on the service task by ```docker exec -it dockerID /bin/bash```. (I load to the gwuservice node2 which has ip 10.0.0.8 here)
   * Install the ping program and ping it again ```ping -c5 10.0.0.8``` and we can find that both task from the gwuservice are on the same overlay network.  
-  ![](node2ping)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1node2ping.PNG)
 * Test the service discovery.
   * Run ```cat /etc/resolv.conf``` to get the "nameserver 127.0.0.11". This value will sends all DNS quries from container to an embedded DNS reolver running inside the container listening on 127.0.0.11:53
   * The container is also be able to ping the gwuservice by name and notice that the value returned from ping is the same as the gwuservice vip(virtual ip address).  
-  ![](vip)
-  ![](vipping)
-* finally clean upp all.
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1vip.PNG)
+  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1vipping.PNG)
+* finally clean up all.
   
   
   
