@@ -383,14 +383,15 @@ But when looking at custom Hello image, we can see three layers in our applicati
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/votingstack.PNG)\\
   * Here are the front-end web UI of the Application  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2frontend.PNG)
-  * SWARM VISUALIZER  
-  ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2votingTable.PNG)
   * In  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/SSTarch.PNG)
   
 
 * Scaling an Application
    * Use ```docker service scale voting_stack_vote=5``` to change the number of vote service to 5 adn use ```docker services voting_stack``` to check it.
+   * SWARM VISUALIZER - from 2 workers to 5 workers.
+   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2addworker.PNG)
+   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2votingTable.PNG)
    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2update%20service.PNG)
    ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2afterstacjArch.PNG)
 
