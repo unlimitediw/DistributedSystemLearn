@@ -365,6 +365,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * Show the swarm members with command ```docker node ls```. There is a node1 whose MANAGER STATUS is Leader due to it is the first manager in the node list and if this node go down for some reasons, the other managers will elect a new leader.
   * There is a view of the Swarm architecture:  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2swarmArch.PNG)
+  * As you can see, only the first manager is the leader and there are a bunch of managers(also can be worker) and workers(can not be manager unless explicitly promoted). They both run service containers and manager nodes can coordinate the cluster quorum.
 
 * Clone the Voting App
   * use git clone ```git clone https://github.com/docker/example-voting-app``` to get the voting app material.
