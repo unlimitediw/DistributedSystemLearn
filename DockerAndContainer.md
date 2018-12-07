@@ -384,6 +384,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2frontend.PNG)
   * SWARM VISUALIZER  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/2votingTable.PNG)
+  * In  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/SSTarch.PNG)
   
 
