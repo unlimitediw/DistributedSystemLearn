@@ -63,7 +63,7 @@
 > Summary: VMs is more secure, strong in isolation and can be combined with Container (e.g Docker: VM + Container) while Container is more lightweight (less resource consumption, startup faster, easy to deploy and specify resource just for application).
 <a name ="dockerintro"></a>
 ### Docker Introduction
-> Foreword:  
+> Foreword:
   * Docker unlocks the potential of your organization by giving developers and IT the freedom to build, manage and secure business-critical applications without the fear of technology or infrastructure lock-in ([www.docker.com](https://www.docker.com/why-docker)).
   * I will go through the beginner tutorial with my explanations for some Linux commands such as 'cat' and 'echo' and interpret the meaning of each command. There are three tasks: run and interact a Ubuntu container, a MySQL container and a custom app using docker and it will give us a view of the processes inside the container and the way to build and modify a container with Image.  
 
@@ -346,11 +346,33 @@ But when looking at custom Hello image, we can see three layers in our applicati
 > Summary: 
    * The network performance inside and outside of the container is basically no difference. After comparing pinging "github.com" both inside and outside, the RTT only is different in 0.001 ms.
    * There are many kind of driver for containers networking such as bridge(default) and overlay and they are scoped in local and swarm respectively. Generally speaking, the bridge is created for connection and the overlay can be used to create a virtual network between seperate host even itself and it is build over an existing netwrok. May be this is the reason why it is called overnet.
-   * There are many powerful commands for inspecting and managing network but since we can create many containers in a OS, we should still care about the management which large scale interconnect in my opinion.
+   * There are many powerful commands for inspecting and managing network but since we can create many containers in a OS, we should still care about the management which large scale interconnect in my opinion. (After writing up this summary, I found the swarm solution in next section. Lucky anyway!)
  
 <a name ="swarm"></a>  
 ### Swarm Mode Introduction Lab
+> Foreword  
+  * Docker Swarm is used to cluster and schedule Docker containers. More details, Swarm Mode provides both the ability to define application architecture and to maintain high availability levels, scaling and load balancing.
+  * In last section, I just worry about too many containers will cause management problem and the Docker Swarm Mode introduced in this section will be a good solution.
+  * The Compose Mode (not used in this section) is also a useful text file that describes the application: which images to use, how many instances, the network connections, etc and it is run on a single system.
 
+
+* Initialize Your Swarm
+  * As we did in last section, use ```docker swarm init --advertise-addr $(hostname -i)``` to initialize Docker Swarm Mode manager and join the worker node to swarm by ```docker swarm join -token ...``` (There are 2 node terminal, run manager and worker commands respectively).
+  * Now, we have one manager and one worker.  
+  ![](twonodes)
+
+* Show Swarm Members
+  * Show the swarm members with command ```docker node ls```. There is a node1 whose MANAGER STATUS is Leader due to it is the first manager in the node list and if this node go down for some reasons, the other managers will elect a new leader.
+  * There is a view of the Swarm architecture:  
+  ![](swarmarch)
+
+* Clone the Voting App
+  * use git clone ```git clone https://github.com/docker/example-voting-app``` to get the voting app material.
+  * go to it's directory by ```cd example-voting-app```
+
+* Deploy a Stack
+  * A stack is a group of services that are deployed together.
   
+
   
   
