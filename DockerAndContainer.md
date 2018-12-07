@@ -371,7 +371,13 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * go to it's directory by ```cd example-voting-app```
 
 * Deploy a Stack
-  * A stack is a group of services that are deployed together.
+  * A stack is a group of services that are deployed together. The components of a single App can run in separate instances(containers) which is called tasks and all tasks&service make up stack.
+  * The "docker-stack.yml" is the plain text file used to define a stack (architecture of services, number of instances, how everything is wired together and how to handle updates to each service). We can check it by ```cat docker-stack.yml```.
+  * Format:  
+    Service name  
+    How the service run(image for particular service, ports and networks and labeld replicas)
+
+    
   
 
   
