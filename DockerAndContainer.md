@@ -308,6 +308,18 @@ But when looking at custom Hello image, we can see three layers in our applicati
   ![](pinginside)
   * Remeber to stop the container by ```docker stop containerid``` after ```exit```.
 * Configure NAT for external connectivity
+  * In this step, we will create a new NGINX container and map port 8080 on the Docker host to port 80 inside of the container which means the traffic that hits the Docker host on port 8080 will be passed on to port 80 inside of the container.
+  * The container image file is pulling from "library/nginx" and we start it by ```docker run --name web1 -d -p 8080:80 nginx```. Run ```docker ps``` to see the container details and find the Port of it is showing as "0.0.0.0:8080->80/tcp". It is show that the web1 container is running NGINX and port maps port 8080 on all host interface to port 80 inside the web1 container which makes the port mapping effectively and accessible from external sources by the Docker hosts IP address on port 8080.  
+  * Connect with outside world (web server) with this port now ```curl 192.168.0.32:8080```.  
+  ![](nginxsuccess)
+> Overlay Networking
+* Works: Initialize a new Swarm, join a single worker node and verify the operations worked.
+* Initiliaze a Swarm node by ```docker swarm init --advertise-addr $(hostname -i)``` and join it by ```docker swarm join ...``` and check it with ```docker node ls```.
+![](swarmjoin)
+* Create an overlay network
+  * Create the overlay network by ```docker network create -d overlay overnet``` and use ```docker network ls``` to verify it
+
+  
   
   
   
