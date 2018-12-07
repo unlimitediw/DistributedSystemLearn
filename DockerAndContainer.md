@@ -375,9 +375,12 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * The "docker-stack.yml" is the plain text file used to define a stack (architecture of services, number of instances, how everything is wired together and how to handle updates to each service). We can check it by ```cat docker-stack.yml```.
   * Format:  
     Service name  
-    How the service run(image for particular service, ports and networks and labeld replicas)
-
-    
+    How the service run(image for particular service, ports and networks and labeld replicas)  
+    ![](ymlformat)
+  * Deploy it by ```docker stack deploy --compose-file=docker-stack.yml voting_stack```. In the voting App we have 6 service and we can check it by ```docker stack ls``` and got the detail of each stack by ```docker stack services voting_stack```.
+  * We can run the ```docker service ps voting_stack_vote``` to get the task running for each node. This Apps has a built-in SWARM VISUALIZER to show it is setup and running.
+  ![](votingstack)
+  ![](SSTarch)
   
 
   
