@@ -303,7 +303,12 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * Now we use the ```docker network inspect bridge``` again to show the new containers connect to the bridge.
   ![](bridgeconnect)
 * Test network connectivity
-  *
+  * Get the IP address of my own environment by ```ifconfig``` and ping it by ```ping -c5 172.17.0.1```. The replies show that the Docker host can ping the container over the bridge network. The container can also ping the outside ip such as ```ping -c5 github.com```.
+  * After install the ping program by ```apt-get update && apt-get install -y iputils-ping```, we can ping both the Ip address inside of the container.  
+  ![](pinginside)
+  * Remeber to stop the container by ```docker stop containerid``` after ```exit```.
+* Configure NAT for external connectivity
+  
   
   
   
