@@ -47,3 +47,24 @@
 * Hadoop is for batch, Storm is for stram
 
 > Edge Computing!!!
+* Latency
+* Bandwidth
+
+> Content Delivery Networks (CDN)
+* It is similar to Edge cloud:
+  * Provide content close to users
+  * Use less core bandwidth, low latency.
+
+* Akamai is the major CDN company
+  * static and dynamic
+  
+> Iot (Internet of things) need
+
+* Streaming data
+
+> Job
+* Amazon's cloud services
+* Hadoop, big data analysis
+* Network programming
+* Multi-threading, concurrency
+* Virtual machines, containers.
