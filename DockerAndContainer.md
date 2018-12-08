@@ -12,6 +12,8 @@
     * [Docker Networking Hands-on Lab](#dockernetlab)
     * [Swarm Mode Introduction Lab](#swarm)
     * [Docker Swarm vs Kubernetes](#swarmkuber)
+    * [Break a Monolith Application into Microservices](#breakservice)
+    
 <a name ="containers"></a>
 ## Containers
 <a name ="whatcontainer"></a>
@@ -478,4 +480,11 @@ But when looking at custom Hello image, we can see three layers in our applicati
 
    
 
-<a name ="swarmkuber"></a>
+<a name ="breakservice"></a>
+### Break a Monolith Application into Microservices
+* Service Architecture:
+  1. Monolithic Architecture: The entire node.js application is run in a container as a single service and each container has the same features as all other containers. If one application feature experiences a spike in demand, the entire architecture must be scaled.
+  2. Microservices Architecture: Each feature of the node.js application runs as a separate service within its own container. The services can scale and be updated independently of the others.
+  
+
+   
