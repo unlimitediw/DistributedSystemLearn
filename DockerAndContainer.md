@@ -415,9 +415,58 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * Swarm is an architecture for node(container) management, and the manager nodes allow running the docker stack and service commands. For instance, we run stack and service command to configure the voting app in the node 1 in the lab and node2 is just a worker joined in the swarm. With the manager node, we can add vote, display front-end interface and so on. In the more higher level, we have stack which is a multi-service app running on the Swarm architecture which allows us to manage all the nodes and it should be through the manager.
 
 <a name ="swarmkuber"></a>
-### Docker Swarm vs Kubernetes
+### Docker Swarm vs Kubernetes and More about Kubernetes.
+> Docker Swarm vs Kubernetes
 * Solutions for orchestrating containers: Kubernetes, Mesos and Docker Swarm -> for providing an abstraction to make a cluster of machines behave like one big machine, which is vital in a large-scale environment.
 * Docker Swarm: It is a scheduler provides a way to adminster a large number of containers spread across clusters of servers which enables the selection of optimal nodes in a cluster to deploy containers.
 * Kubernetes: It is an open source container orchestrator and a comprehensive system for automating deployment, scheduling and scaling of containerized applications, and supports many containerization tools such as Docker.
+
+> Official doc for [Kbernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
+* Kubernetes coordinates a highly available cluster of computers that are connected to work as a single unit. It automate the distribution and scheduling of application containers across a cluster in a more efficient way.
+  * The Master coordinates the cluster
+  * Nodes are the workers that run applications.
+![](kuberdigram)
+* Cluster Digram:
+  * The Master is responsible for manging the cluster.
+  * A node is a VM or a physical computer that serves as a worker machine in a Kubernetes cluster. (Kubelet communicate with the Kubernetes) The nodes communicate with the master using the Kubernetes API.
+* Create a Cluster
+  * Use the ```minikube start``` to start the local Kubernete cluster and VM. Then use ```kubectl version``` to check the client and server version.
+  * Use ```kubectl cluster-info``` to get the running environment IP address and port number and use ```kubectl get nodes``` to view the nodes in the cluster.
+  
+* Kubernetes Deployments
+  * Deploy the containerized application on top of Kubernetes cluster and use self-healing mechanism to address machine failure or maintenance.
+  ![](deploy)
+  * Create and manage a Deployment by ```Kubectl```. Run the app on Kubernetes by ```kubectl run``` which create a new deployment and we can add the ```--port=1234``` to let the app run on a specific port. 
+  * Pods that are runing inside Kubernetes are running on a private, isolated network. (jump host by ```kubectl proxy``` command)
+  * First we can query the version of a host with ```curl host:port/version``` and then we can set and get the Pod name by ```export``` and ```echo```
+
+* Explore the APP
+  * After deployment, Kubernetes create a Pod to host the application instance. A Pod is a Kubernetes abstraction that represents a group of one or more application containers. Some of containers share resources (Storage-volumes, networking and running information).
+  * A Pod runs on a Node which is a worker machine in Kubernetes and run at least 1.Kubelet (communication process) and 2. A container which is responsible for pulling the container image from a registry, unpacking the container and running the application.
+  ![](nodeoverview)
+  * Some commands: ```kubectk get pods```, ```kubectl describe pods```, retrive STDOUT logs using ```kubectl logs $POD_NAME``` and execute command directly on the container using ```kubectl exec $POD_NAME```.
+
+* APP Publicly
+  * There are many services for the management of Pods and it is usually determined by *LableSelector.
+  ![](servicelabel)
+  * Labels are key/value pairs attached to objects and can be used in:
+    * Designate objects for development, test and production
+    * Embed version tags
+    * Classify an object using tags
+  * Apply a new label to Pod by ```kubectl label pod $POD_NAME app=v1```.
+  ![](seelabel)
+
+* Rolling Update
+  * Rolling Update allow Deployments' update to take place with zero downtime by incrementally updating Pods instances with new one.
+  * Procedure:
+    1. add a new container with new IP address as the uodated app. (basic step)
+    2. do it one by one in other nodes and finally update all nodes. (1. Promote an application from one environment to another via contaier image updates, 2. Rollback to previous versions and 3. Continuous Integration and Continuous Delivery of applications with zero downtime.
+  * Example Procedure:
+    * Update the version of app by ```kubectl set image ...```.
+    * Verify an update by ```kubectl rollout status``` or ```curl $(minikube ip):$NODE_PORT```.
+    * Rollback an update by ```kubectl rollout undo``` which can reverte the deployment to the previous known state.
+> Summary: Both Docker Swarm and Kubernetes are clustering solution for Docker containers and Kubernetes is the market leader but it needs to run with docker containers.
+
+   
 
 <a name ="swarmkuber"></a>
