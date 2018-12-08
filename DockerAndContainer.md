@@ -11,6 +11,7 @@
     * [Introduction](#netorcintro)
     * [Docker Networking Hands-on Lab](#dockernetlab)
     * [Swarm Mode Introduction Lab](#swarm)
+    * [Docker Swarm vs Kubernetes](#swarmkuber)
 <a name ="containers"></a>
 ## Containers
 <a name ="whatcontainer"></a>
@@ -413,6 +414,10 @@ But when looking at custom Hello image, we can see three layers in our applicati
 > Summary:
   * Swarm is an architecture for node(container) management, and the manager nodes allow running the docker stack and service commands. For instance, we run stack and service command to configure the voting app in the node 1 in the lab and node2 is just a worker joined in the swarm. With the manager node, we can add vote, display front-end interface and so on. In the more higher level, we have stack which is a multi-service app running on the Swarm architecture which allows us to manage all the nodes and it should be through the manager.
 
+<a name ="swarmkuber"></a>
+### Docker Swarm vs Kubernetes
+* Solutions for orchestrating containers: Kubernetes, Mesos and Docker Swarm -> for providing an abstraction to make a cluster of machines behave like one big machine, which is vital in a large-scale environment.
+* Docker Swarm: It is a scheduler provides a way to adminster a large number of containers spread across clusters of servers which enables the selection of optimal nodes in a cluster to deploy containers.
+* Kubernetes: It is an open source container orchestrator and a comprehensive system for automating deployment, scheduling and scaling of containerized applications, and supports many containerization tools such as Docker.
 
-  
-  
+<a name ="swarmkuber"></a>
