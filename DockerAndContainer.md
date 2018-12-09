@@ -514,18 +514,18 @@ But when looking at custom Hello image, we can see three layers in our applicati
 > Step3: Break the Monolith and Deploy Microservices
 * Bullet points: Microservice provides more isolation and allows more tolerance to crashes handling and more security. At the same time, it also allows scale independtly and develops faster.
 * Architecture Overview
-![](Breakarch)  
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4breakarch.PNG)  
    * Client makes traffic requests over port 80. -> The ALB routes exterbak traffic to the correct service and inspects the client request and uses the routing rules to direct the request to an instance and port for the target group matching the rule. -> Each service has a target group that keeps track of the instance and ports of each container running for that service. -> EC2 deploys each service into a container across an EC2 cluster. Each container only handles a single feature.
 
 * Provision The ECR Repository: Create three repository -users, threads and posts.
 * Then build an push images for each service. (be careful the ID is the actual ID)
 * Deploy Microservices:
-![](deployMicro)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4deployMicro.PNG)
 * With the Monolith task definition experience, I find that json deployment is much easier. After the definition, we create three target groups correspond to it and one more "drop-traffic" group which is a 'dummy' target (using to keep traffic from reaching your monolith after your microservices are fully running).
 * Then we will configure the Listener (checking for incomming connection requests to your ALB in order to route traffic appropriately) rules again, and Deploy all of it and turn off "api"
-![](afterturnoff)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4afterturnoff.PNG)
 * The users result (validation, same as threads and posts):
-![](users)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4users.PNG)
 
 > Summary:
    * Due to unfamiliar with AWS services such as Load Balanacer and Clusters, I paid lots of time to do it again and again but it is meaningful. I got the skills of json configuration, awscli and microservices deployment now.
