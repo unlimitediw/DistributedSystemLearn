@@ -18,6 +18,7 @@
 ## Containers
 <a name ="whatcontainer"></a>
 ### Containers Introduction
+[Back to Menu](#menu)
 > Definition: A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another ([www.docker.com](https://www.docker.com/resources/what-container)).  
 
 > Not just a Container  
@@ -47,6 +48,7 @@
 > Summary: Container is a sandbox that allows user to isolate their processes while Container Image (created by dockerfile) likes a manager allows sharing and concentrates specific things in specific area. The Docker Host links all these things together and provides a standard, lightweight and secure Container.
 <a name ="containervsvm"></a>
 ### VMs vs Containers
+[Back to Menu](#menu)
 > VM  
   * APP -> OS -> VM -> Hypervisor -> Physical (notice that Application virtualization and Hosted virtualization are onside of OS)
   * VM: NIC(Network interface), Storage and Size.  
@@ -68,6 +70,7 @@
 > Summary: VMs is more secure, strong in isolation and can be combined with Container (e.g Docker: VM + Container) while Container is more lightweight (less resource consumption, startup faster, easy to deploy and specify resource just for application).
 <a name ="dockerintro"></a>
 ### Docker Introduction
+[Back to Menu](#menu)
 > Foreword:
   * Docker unlocks the potential of your organization by giving developers and IT the freedom to build, manage and secure business-critical applications without the fear of technology or infrastructure lock-in ([www.docker.com](https://www.docker.com/why-docker)).
   * I will go through the beginner tutorial with my explanations for some Linux commands such as 'cat' and 'echo' and interpret the meaning of each command. There are three tasks: run and interact a Ubuntu container, a MySQL container and a custom app using docker and it will give us a view of the processes inside the container and the way to build and modify a container with Image.  
@@ -147,6 +150,7 @@
 > Summary: In this docker tutoriall, The image instance of the container is built by pulling from the DockerHub and Dockerfile. Each of the process is running in its own container, and to manage these container you need to go inside of it or exit. The hierarchical structure, isolation of container and convenient commands make the process management becomes much easier, secure and standard.
 <a name ="dockerimage"></a>
 ### Docker images
+[Back to Menu](#menu)
 > Foreword:
    * Definition: Docker Images are defined by Dockerfile which defines what goes on in the environment inside your container ([www.docker.com](https://docs.docker.com/get-started/part2/#your-new-development-environment)).  
    * This part is mainly considering about how to create my own Image and more deeply how to build DockerFile and use it to create image. At the same time, there are many important concepts such as 'layers' and 'volumes' and 'image inspection'
@@ -259,6 +263,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
 
 <a name ="netorcintro"></a>
 ### Introduction
+[Back to Menu](#menu)
 > Docker Networking
 * Docker Networking connect docker together.
 
@@ -276,6 +281,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
 
 <a name ="dockernetlab"></a>
 ### Docker Networking Hands-on Lab
+[Back to Menu](#menu)
 > Foreword
   * This lab is about Key Docker Networking concepts learning such as 'bridge' and 'overlay networking' and finally will create a service and test it. In this lab, I specifically create a gwuservice and test some different value to check the key point like vip address and ping outside/inside.
   
@@ -355,6 +361,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
  
 <a name ="swarm"></a>  
 ### Swarm Mode Introduction Lab
+[Back to Menu](#menu)
 > Foreword  
   * Docker Swarm is used to cluster and schedule Docker containers. More details, Swarm Mode provides both the ability to define application architecture and to maintain high availability levels, scaling and load balancing.
   * In last section, I just worry about too many containers will cause management problem and the Docker Swarm Mode introduced in this section will be a good solution.
@@ -418,6 +425,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
 
 <a name ="swarmkuber"></a>
 ### Docker Swarm vs Kubernetes and More about Kubernetes.
+[Back to Menu](#menu)
 > Docker Swarm vs Kubernetes
 * Solutions for orchestrating containers: Kubernetes, Mesos and Docker Swarm -> for providing an abstraction to make a cluster of machines behave like one big machine, which is vital in a large-scale environment.
 * Docker Swarm: It is a scheduler provides a way to adminster a large number of containers spread across clusters of servers which enables the selection of optimal nodes in a cluster to deploy containers.
@@ -482,6 +490,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
 
 <a name ="breakservice"></a>
 ### Break a Monolith Application into Microservices
+[Back to Menu](#menu)
 * Service Architecture:
   1. Monolithic Architecture: The entire node.js application is run in a container as a single service and each container has the same features as all other containers. If one application feature experiences a spike in demand, the entire architecture must be scaled.
   2. Microservices Architecture: Each feature of the node.js application runs as a separate service within its own container. The services can scale and be updated independently of the others.
@@ -513,18 +522,18 @@ But when looking at custom Hello image, we can see three layers in our applicati
 
 > Step3: Break the Monolith and Deploy Microservices
 * Bullet points: Microservice provides more isolation and allows more tolerance to crashes handling and more security. At the same time, it also allows scale independtly and develops faster.
-* Architecture Overview
+* Architecture Overview  
 ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4breakarch.PNG)  
    * Client makes traffic requests over port 80. -> The ALB routes exterbak traffic to the correct service and inspects the client request and uses the routing rules to direct the request to an instance and port for the target group matching the rule. -> Each service has a target group that keeps track of the instance and ports of each container running for that service. -> EC2 deploys each service into a container across an EC2 cluster. Each container only handles a single feature.
 
 * Provision The ECR Repository: Create three repository -users, threads and posts.
 * Then build an push images for each service. (be careful the ID is the actual ID)
-* Deploy Microservices:
+* Deploy Microservices:  
 ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4deployMicro.PNG)
 * With the Monolith task definition experience, I find that json deployment is much easier. After the definition, we create three target groups correspond to it and one more "drop-traffic" group which is a 'dummy' target (using to keep traffic from reaching your monolith after your microservices are fully running).
-* Then we will configure the Listener (checking for incomming connection requests to your ALB in order to route traffic appropriately) rules again, and Deploy all of it and turn off "api"
+* Then we will configure the Listener (checking for incomming connection requests to your ALB in order to route traffic appropriately) rules again, and Deploy all of it and turn off "api"  
 ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4afterturnoff.PNG)
-* The users result (validation, same as threads and posts):
+* The users result (validation, same as threads and posts):  
 ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4users.PNG)
 
 > Summary:
