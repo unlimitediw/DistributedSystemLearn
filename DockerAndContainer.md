@@ -490,24 +490,24 @@ But when looking at custom Hello image, we can see three layers in our applicati
 * Install docker on my Windows: need to enable the virtualization service on BIOS mode.
 * Setup aws by ```pip install awscli --upgrade --user``` and add the python path to System Path with ```set PATH%PATH%;C:\...```
 * Login in to AWS Authenticate Docker with command ```aws ecr get-login --no-include-email --region us-east-1``` and my "AWS Access Keu ID" and "AWS Secret Access Key" in the "credential.csv".
-![](successlogin1)
-![](successlogin2)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4successlogin.PNG)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4successlogin2.PNG)
 * Then biuld the image with ```docker build -t api .```. However, there is a bug in the lab instruction and you should first ```docker login``` then run this command.
-![](buildimage)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4buildimage.PNG)
 * After that tag the image to push with command ```docker tag api:latest [account-id].dkr.ecr.[region].amazonaws.com/api:v1```. And push it to ECR with command ```docker push [account-id].dkr.ecr.[region].amazonaws.com/api:latest```. In this place, you should copy the repository url rather than using the instruction format.
-![](pushimage)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4pushimage.PNG)
 
 > Step2: Deploy the Monolith
 * Architecture Overview: 
-![](Monolitharch)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4monolitharch.PNG)
    * Client makes a request over port 80 to the load balancer -> The load balancer distributes requests across all available ports -> Instances are registrered in the application's target group -> Each container runs a single application process which binds the node.js cluster parent to port 80 within its namespace -> The node.js cluster parent is responsible for distributing traffic to the workers within the monlithic application. (monolithic because each container has all features of the rest of the containers.)
 
 * Amazon ECS(Elastic Container Service): a good container managerment service allows you to run Apps on a managed cluster of Amazon EC2 instances.
 * Create an AWS CloudFormation Stack and upload the "ecs.yml" file in containerized-infrastruce folder as a template
-![](ecscluster)
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4ecscluster.PNG)
 * Next we will write a task definition named "api" with the image we build previously and use the load balancer(ALB) in EC2 management to see the VPC and use it to create the ALB target group. And then add a Listener(in EC2 Load Balance) and set Forward to "api".
 * Finally we will deploy the Monolith as a service by configuring the service in Amazon ECS console.
-![](myservice
+![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4myService.PNG)
 
 > Step3: Break the Monolith
 * Bullet points: Microservice provides more isolation and allows more tolerance to crashes handling and more security. At the same time, it also allow scale independtly and develope faster.
