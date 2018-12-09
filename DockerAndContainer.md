@@ -40,11 +40,11 @@
     * Client can also do network and storage configuration
     * Client manage container lifecycle
   * Deamon inside (Client talk to deamon with API) 
-  * Storage inside(but beyond lifecyle) (Volume, a persistent area of storage) or network (push it out on network)
+  * Storage inside(but beyond lifecycle) (Volume, a persistent area of storage) or network (push it out on network)
     * Use it if it wants to persist any data beyond the lifecycle of the container
     * Network will also allow persistence after container end
   * Container Life Cycle
-> Summary: Container is a sandbox that allows user to ioslate their processes while Container Image (created by dockerfile) likes a manager allows sharing and concetrates specific things in specific area. The Docker Host links all these things together and provides a standard, lightweight and secure Container.
+> Summary: Container is a sandbox that allows user to isolate their processes while Container Image (created by dockerfile) likes a manager allows sharing and concentrates specific things in specific area. The Docker Host links all these things together and provides a standard, lightweight and secure Container.
 <a name ="containervsvm"></a>
 ### VMs vs Containers
 > VM  
@@ -91,7 +91,7 @@
     1. Run a Docker container and access its shell by "docker container run --interactive --tty --rm ubuntu bash"
       * ```--interactive``` says you want an interactive session.
       * ```--tty``` allocates a pseudo-tty.
-      * ```--rm``` tells Docker to go ahead and remove the container when it's done exuecuting.
+      * ```--rm``` tells Docker to go ahead and remove the container when it's done executing.
       * bash(which is a shell, a user interface for access to an operating system) is used as main process.
       * Now you are in the bash shell.
       * When the container start you will drop into the bash shell with the default prompt root@<container id>:/#. Docker has attached to the shell in the container, relying input and output between your local session in the container.
@@ -130,7 +130,7 @@
   2. ```cat Dockerfile```
      * cat: concatenate command in linux.
      * From: specifies the base image to use as the starting point for this new image you're creating. For this example we're starting from nginx:latest.
-     * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two filesinto the image: index.html. and a graphic that will be used on our webpag.
+     * COPY: copies files from the Docker host into the image, at a known location. In this example, COPY is used to copy two files into the image: index.html. and a graphic that will be used on our webpage.
      * EXPOSE: documents which ports the application uses.
      * CMD: specifies what command to run when a container is started from the image (both command and run-time arguments).  
      ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/displayContent.PNG)
