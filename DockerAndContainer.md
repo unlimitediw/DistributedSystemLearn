@@ -251,7 +251,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
 * Applications that create and store data (databases, for example) can store their data in a special kind of Docker object called a volume  
 > volume - A special Docker container layer that allows data to persist and be shared separately from the container itself. Think of volumes as a way to abstract and manage your persistent data separately from the application itself.  
 
-> Summary: In this part, I create the dockerfile(text) diretly on Linux and take it to build my own image and run the container. The general process of it is FROM, RUN, COPY, WORKDIR and CMD and we also need to consder the version control of image layers and we can do it by image inspection.
+> Summary: In this part, I create the dockerfile(text) directly on Linux and take it to build my own image and run the container. The general process of it is FROM, RUN, COPY, WORKDIR and CMD and we also need to consder the version control of image layers and we can do it by image inspection.
 
 
 <a name ="networkOrch"></a>
@@ -301,7 +301,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * We can see the details of the 'bridge0' with command ```ip a```.  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1ipa.PNG)
 * Connect a container
-  * The bridge network is the default newtork for new container.
+  * The bridge network is the default network for new container.
   * ```docker run -dt ubuntu sleep infinity```: This command can create a new Ubuntu network.
   * I create two containers here and use ```docker ps``` to verify my example containers.  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1dockerps.PNG)
@@ -342,7 +342,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * Install the ping program and ping it again ```ping -c5 10.0.0.8``` and we can find that both task from the gwuservice are on the same overlay network.  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1node2ping.PNG)
 * Test the service discovery.
-  * Run ```cat /etc/resolv.conf``` to get the "nameserver 127.0.0.11". This value will sends all DNS quries from container to an embedded DNS reolver running inside the container listening on 127.0.0.11:53
+  * Run ```cat /etc/resolv.conf``` to get the "nameserver 127.0.0.11". This value will sends all DNS quries from container to an embedded DNS resolver running inside the container listening on 127.0.0.11:53
   * The container is also be able to ping the gwuservice by name and notice that the value returned from ping is the same as the gwuservice vip(virtual ip address).  
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1vip.PNG)
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/1vipping.PNG)
@@ -350,7 +350,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
 
 > Summary: 
    * The network performance inside and outside of the container is basically no difference. After comparing pinging "github.com" both inside and outside, the RTT only is different in 0.001 ms.
-   * There are many kind of driver for containers networking such as bridge(default) and overlay and they are scoped in local and swarm respectively. Generally speaking, the bridge is created for connection and the overlay can be used to create a virtual network between seperate host even itself and it is build over an existing netwrok. May be this is the reason why it is called overnet.
+   * There are many kind of driver for containers networking such as bridge(default) and overlay and they are scoped in local and swarm respectively. Generally speaking, the bridge is created for connection and the overlay can be used to create a virtual network between sepearate host even itself and it is build over an existing netwrok. May be this is the reason why it is called overnet.
    * There are many powerful commands for inspecting and managing network but since we can create many containers in a OS, we should still care about the management which large scale interconnect in my opinion. (After writing up this summary, I found the swarm solution in next section. Lucky anyway!)
  
 <a name ="swarm"></a>  
@@ -441,7 +441,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
   * Deploy the containerized application on top of Kubernetes cluster and use self-healing mechanism to address machine failure or maintenance.
   ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/3deploy.PNG)
   * Create and manage a Deployment by ```Kubectl```. Run the app on Kubernetes by ```kubectl run``` which create a new deployment and we can add the ```--port=1234``` to let the app run on a specific port. 
-  * Pods that are runing inside Kubernetes are running on a private, isolated network. (jump host by ```kubectl proxy``` command)
+  * Pods that are running inside Kubernetes are running on a private, isolated network. (jump host by ```kubectl proxy``` command)
   * First we can query the version of a host with ```curl host:port/version``` and then we can set and get the Pod name by ```export``` and ```echo```
 
 * Explore the APP
@@ -486,7 +486,7 @@ But when looking at custom Hello image, we can see three layers in our applicati
   1. Monolithic Architecture: The entire node.js application is run in a container as a single service and each container has the same features as all other containers. If one application feature experiences a spike in demand, the entire architecture must be scaled.
   2. Microservices Architecture: Each feature of the node.js application runs as a separate service within its own container. The services can scale and be updated independently of the others.
   
-> Step1: Prepareing.
+> Step1: Preparing.
 * Install docker on my Windows: need to enable the virtualization service on BIOS mode.
 * Setup aws by ```pip install awscli --upgrade --user``` and add the python path to System Path with ```set PATH%PATH%;C:\...```
 * Login in to AWS Authenticate Docker with command ```aws ecr get-login --no-include-email --region us-east-1``` and my "AWS Access Keu ID" and "AWS Secret Access Key" in the "credential.csv".
@@ -503,14 +503,14 @@ But when looking at custom Hello image, we can see three layers in our applicati
    * Client makes a request over port 80 to the load balancer -> The load balancer distributes requests across all available ports -> Instances are registrered in the application's target group -> Each container runs a single application process which binds the node.js cluster parent to port 80 within its namespace -> The node.js cluster parent is responsible for distributing traffic to the workers within the monlithic application. (monolithic because each container has all features of the rest of the containers.)
 
 * Amazon ECS(Elastic Container Service): a good container managerment service allows you to run Apps on a managed cluster of Amazon EC2 instances.
-* Create an AWS CloudFormation Stack and upload the "ecs.yml" file in containerized-infrastruce folder as a template
+* Create an AWS CloudFormation Stack and upload the "ecs.yml" file in containerized-infrastructure folder as a template
 ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4ecscluster.PNG)
 * Next we will write a task definition named "api" with the image we build previously and use the load balancer(ALB) in EC2 management to see the VPC and use it to create the ALB target group. And then add a Listener(in EC2 Load Balance) and set Forward to "api".
 * Finally we will deploy the Monolith as a service by configuring the service in Amazon ECS console.
 ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4myService.PNG)
 
 > Step3: Break the Monolith
-* Bullet points: Microservice provides more isolation and allows more tolerance to crashes handling and more security. At the same time, it also allow scale independtly and develope faster.
+* Bullet points: Microservice provides more isolation and allows more tolerance to crashes handling and more security. At the same time, it also allows scale independtly and develops faster.
 * Architecture Overview
 ![](Breakarch)  
    * Client makes traffic requests over port 80. -> The ALB routes exterbak traffic to the correct service and inspects the client request and uses the routing rules to direct the request to an instance and port for the target group matching the rule. -> Each service has a target group that keeps track of the instance and ports of each container running for that service. -> EC2 deploys each service into a container across an EC2 cluster. Each container only handles a single feature.
