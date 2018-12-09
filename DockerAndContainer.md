@@ -511,10 +511,25 @@ But when looking at custom Hello image, we can see three layers in our applicati
 * Summary: After pushing the tagged image onto the repository, we need to create a target group (with VPC) to regestry the instances of it and set a listener of it. Finally we can deploy it with all things linked. 
 
 
-> Step3: Break the Monolith
+> Step3: Break the Monolith and Deploy Microservices
 * Bullet points: Microservice provides more isolation and allows more tolerance to crashes handling and more security. At the same time, it also allows scale independtly and develops faster.
 * Architecture Overview
 ![](Breakarch)  
    * Client makes traffic requests over port 80. -> The ALB routes exterbak traffic to the correct service and inspects the client request and uses the routing rules to direct the request to an instance and port for the target group matching the rule. -> Each service has a target group that keeps track of the instance and ports of each container running for that service. -> EC2 deploys each service into a container across an EC2 cluster. Each container only handles a single feature.
 
-* Provision The ECR Repository
+* Provision The ECR Repository: Create three repository -users, threads and posts.
+* Then build an push images for each service. (be careful the ID is the actual ID)
+* Deploy Microservices:
+![](deployMicro)
+* With the Monolith task definition experience, I find that json deployment is much easier. After the definition, we create three target groups correspond to it and one more "drop-traffic" group which is a 'dummy' target (using to keep traffic from reaching your monolith after your microservices are fully running).
+* Then we will configure the Listener (checking for incomming connection requests to your ALB in order to route traffic appropriately) rules again, and Deploy all of it and turn off "api"
+![](afterturnoff)
+* The users result (validation, same as threads and posts):
+![](users)
+
+> Summary:
+   * Due to unfamiliar with AWS services such as Load Balanacer and Clusters, I paid lots of time to do it again and again but it is meaningful. I got the skills of json configuration, awscli and microservices deployment now.
+   * In a cluster, we can set one container or multiple containers with different image. The strengths of multiple microservices are that you can easily adjust each unit, no matter turn on/off, update or duplicate. Furthermore, it is more reliable since they are isolated and the whole system may not be influenced even if some of them are crashed.
+   * With AWS, we can easily divied the monolith program into multiple small service and its user-friendly interface lets us only need to consider how to spilt the monolith service into microservices.
+   
+   
