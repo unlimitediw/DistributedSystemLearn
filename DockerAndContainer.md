@@ -508,6 +508,8 @@ But when looking at custom Hello image, we can see three layers in our applicati
 * Next we will write a task definition named "api" with the image we build previously and use the load balancer(ALB) in EC2 management to see the VPC and use it to create the ALB target group. And then add a Listener(in EC2 Load Balance) and set Forward to "api".
 * Finally we will deploy the Monolith as a service by configuring the service in Amazon ECS console.
 ![](https://github.com/unlimitediw/DistributedSystemLearn/blob/master/Image/4myService.PNG)
+* Summary: After pushing the tagged image onto the repository, we need to create a target group (with VPC) to regestry the instances of it and set a listener of it. Finally we can deploy it with all things linked. 
+
 
 > Step3: Break the Monolith
 * Bullet points: Microservice provides more isolation and allows more tolerance to crashes handling and more security. At the same time, it also allows scale independtly and develops faster.
@@ -515,4 +517,4 @@ But when looking at custom Hello image, we can see three layers in our applicati
 ![](Breakarch)  
    * Client makes traffic requests over port 80. -> The ALB routes exterbak traffic to the correct service and inspects the client request and uses the routing rules to direct the request to an instance and port for the target group matching the rule. -> Each service has a target group that keeps track of the instance and ports of each container running for that service. -> EC2 deploys each service into a container across an EC2 cluster. Each container only handles a single feature.
 
-* 
+* Provision The ECR Repository
