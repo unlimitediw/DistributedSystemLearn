@@ -486,5 +486,24 @@ But when looking at custom Hello image, we can see three layers in our applicati
   1. Monolithic Architecture: The entire node.js application is run in a container as a single service and each container has the same features as all other containers. If one application feature experiences a spike in demand, the entire architecture must be scaled.
   2. Microservices Architecture: Each feature of the node.js application runs as a separate service within its own container. The services can scale and be updated independently of the others.
   
+> Step1: Prepareing.
+* Install docker on my Windows: need to enable the virtualization service on BIOS mode.
+* Setup aws by ```pip install awscli --upgrade --user``` and add the python path to System Path with ```set PATH%PATH%;C:\...```
+* Login in to AWS Authenticate Docker with command ```aws ecr get-login --no-include-email --region us-east-1``` and my "AWS Access Keu ID" and "AWS Secret Access Key" in the "credential.csv".
+![](successlogin1)
+![](successlogin2)
+* Then biuld the image with ```docker build -t api .```. However, there is a bug in the lab instruction and you should first ```docker login``` then run this command.
+![](buildimage)
+* After that tag the image to push with command ```docker tag api:latest [account-id].dkr.ecr.[region].amazonaws.com/api:v1```. And push it to ECR with command ```docker push [account-id].dkr.ecr.[region].amazonaws.com/api:latest```. In this place, you should copy the repository url rather than using the instruction format.
+![](pushimage)
 
+> Step2: Deploy the Monolith
+* Architecture Overview: 
+!()[Monolitharch]
+   * Client makes a request over port 80 to the load balancer -> The load balancer distributes requests across all available ports -> Instances are registrered in the application's target group -> Each container runs a single application process which binds the node.js cluster parent to port 80 within its namespace -> The node.js cluster parent is responsible for distributing traffic to the workers within the monlithic application. (monolithic because each container has all features of the rest of the containers.)
+
+* Amazon ECS(Elastic Container Service): a good container managerment service allows you to run Apps on a managed cluster of Amazon EC2 instances.
+* Create an AWS CloudFormation Stack and upload the "ecs.yml" file in containerized-infrastruce folder as a template
+![](ecscluster)
+* After that 
    
